@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebHeaderComponent implements OnInit {
 
-  menuVariable: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
@@ -27,6 +26,19 @@ export class WebHeaderComponent implements OnInit {
       mobileNavHide?.classList.toggle('d-none');
     }
 
-  }
+    document.querySelectorAll("[id='navbar a']").forEach((navbarlink: any) => {
+      if (!navbarlink.hash) return;
 
+      let section = document.querySelector(navbarlink);
+      if (!section) return;
+
+      navbarlink.addEventListener('click', () => {
+        if (document.querySelector('.mobile-nav-active')) {
+          mobileNavToogle();
+        }
+      });
+
+    });
+
+  }
 }
