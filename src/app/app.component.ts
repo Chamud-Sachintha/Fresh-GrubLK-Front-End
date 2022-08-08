@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Fresh-Grub-LK-Front-End';
+  title = 'Fresh Grub LK | Home';
 }
