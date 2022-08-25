@@ -1,0 +1,96 @@
+<div class="page-content" style="margin-top: -100px;">
+    <div class="form-v4-content">
+        <div class="form-left">
+            <h2>INFOMATION</h2>
+            <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.</p>
+            <p class="text-2"><span>Eu ultrices:</span> Vitae auctor eu augue ut. Malesuada nunc vel risus commodo
+                viverra. Praesent elementum facilisis leo vel.</p>
+            <div class="form-left-last" *ngIf="this.sellerSignInFormAppear">
+                <input type="submit" name="account" class="account" value="Sign-In As Customer" style="width: 100%;" (click)="onClickCustomerFormApper()">
+            </div>
+
+            <div class="form-left-last" *ngIf="!this.sellerSignInFormAppear">
+                <input type="submit" name="account" class="account" value="Sign-In As Seller" style="width: 100%;" (click)="onClickSellerFormAppear()">
+            </div>
+
+            <div class="form-left-last" *ngIf="this.driverSignInFormAppear">
+                <input type="submit" name="account" class="account" value="Sign-In As Customer" style="width: 100%;" (click)="onClickCustomerFormApper()">
+            </div>
+
+            <div class="form-left-last" *ngIf="!this.driverSignInFormAppear">
+                <input type="submit" name="account" class="account" value="Sign-In As Driver" style="width: 100%" (click)="onClickDriverFormAppear()">
+            </div>
+        </div>
+        <form class="form-detail" action="#" method="post" *ngIf="this.customerSignInFormAppear">
+            <h2>Sign-In</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <hr>
+
+            <div class="col-12 mt-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" placeholder="kamal123@gmail.com">
+            </div>
+
+            <div class="col-12 mt-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="************">
+            </div>
+
+            <div class="col-12 mt-3">
+                <input type="submit" class="btn btn-primary" value="Sign-In As Customer" style="color: white;">
+            </div>
+
+            <div class="col-12 mt-4 text-center">
+                <a href="" style="color: dodgerblue;">Dont have an Account</a>
+            </div>
+        </form>
+
+        <form class="form-detail" action="#" method="post" *ngIf="this.sellerSignInFormAppear">
+            <h2>Sign-In As Seller</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <hr>
+
+            <div class="col-12 mt-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" placeholder="kamal123@gmail.com">
+            </div>
+
+            <div class="col-12 mt-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="************">
+            </div>
+
+            <div class="col-12 mt-3">
+                <input type="submit" class="btn btn-primary" value="Sign-In As Customer" style="color: white;">
+            </div>
+
+            <div class="col-12 mt-4 text-center">
+                <a href="" style="color: dodgerblue;">Dont have an Account</a>
+            </div>
+        </form>
+
+        <form class="form-detail" action="#" method="post" *ngIf="this.driverSignInFormAppear">
+            <h2>Sign-In As Driver</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <hr>
+
+            <div class="col-12 mt-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" placeholder="kamal123@gmail.com">
+            </div>
+
+            <div class="col-12 mt-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="************">
+            </div>
+
+            <div class="col-12 mt-3">
+                <input type="submit" class="btn btn-primary" value="Sign-In As Customer" style="color: white;">
+            </div>
+
+            <div class="col-12 mt-4 text-center">
+                <a href="" style="color: dodgerblue;">Dont have an Account</a>
+            </div>
+        </form>
+    </div>
