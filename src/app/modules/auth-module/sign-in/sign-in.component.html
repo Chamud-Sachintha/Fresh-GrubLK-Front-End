@@ -22,6 +22,11 @@
                 <input type="submit" name="account" class="account" value="Sign-In As Driver" style="width: 100%" (click)="onClickDriverFormAppear()">
             </div>
         </div>
+        <div class="row" style="padding: 150px;" *ngIf="isLoading">
+            <div class="col-12">
+                <mat-spinner class="mt-5"></mat-spinner>
+            </div>
+        </div>
         <form class="form-detail" action="#" method="post" *ngIf="this.customerSignInFormAppear">
             <h2>Sign-In</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -42,7 +47,11 @@
             </div>
 
             <div class="col-12 mt-4 text-center">
-                <a href="" style="color: dodgerblue;">Dont have an Account</a>
+                <a href="" routerLink="/auth/sign-up" style="color: dodgerblue;">Dont have an Account</a>
+            </div>
+
+            <div class="col-12 mt-1 text-center">
+                <a href="" routerLink="/" style="color: dodgerblue">Go Back to The Main Page</a>
             </div>
         </form>
 
@@ -66,7 +75,11 @@
             </div>
 
             <div class="col-12 mt-4 text-center">
-                <a href="" style="color: dodgerblue;">Dont have an Account</a>
+                <a href="" routerLink="/auth/sign-up" style="color: dodgerblue;">Dont have an Account</a>
+            </div>
+
+            <div class="col-12 mt-1 text-center">
+                <a href="" routerLink="/" style="color: dodgerblue">Go Back to The Main Page</a>
             </div>
         </form>
 
@@ -90,7 +103,11 @@
             </div>
 
             <div class="col-12 mt-4 text-center">
-                <a href="" style="color: dodgerblue;">Dont have an Account</a>
+                <a href="" routerLink="/auth/sign-up" style="color: dodgerblue;">Dont have an Account</a>
+            </div>
+
+            <div class="col-12 mt-1 text-center">
+                <a href="" routerLink="/" style="color: dodgerblue">Go Back to The Main Page</a>
             </div>
         </form>
     </div>

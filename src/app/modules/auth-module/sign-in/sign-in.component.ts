@@ -10,27 +10,47 @@ export class SignInComponent implements OnInit {
   sellerSignInFormAppear = false;
   driverSignInFormAppear = false;
   customerSignInFormAppear = true;
+  isLoading = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onClickSellerFormAppear() {
+  bringFalse() {
+    this.isLoading = true;
+    this.sellerSignInFormAppear = false;
     this.customerSignInFormAppear = false;
-    this.sellerSignInFormAppear = true;
     this.driverSignInFormAppear = false;
+  }
+
+  onClickSellerFormAppear() {
+    this.bringFalse();
+    setTimeout(() => { 
+      this.customerSignInFormAppear = false;
+      this.sellerSignInFormAppear = true;
+      this.driverSignInFormAppear = false;
+      this.isLoading = false; 
+    }, 2000);
   }
 
   onClickCustomerFormApper() {
-    this.customerSignInFormAppear = true;
-    this.sellerSignInFormAppear = false;
-    this.driverSignInFormAppear = false;
+    this.bringFalse();
+    setTimeout(() => {
+      this.customerSignInFormAppear = true;
+      this.sellerSignInFormAppear = false;
+      this.driverSignInFormAppear = false;
+      this.isLoading = false;
+    }, 2000);
   }
 
   onClickDriverFormAppear() {
-    this.customerSignInFormAppear = false;
-    this.sellerSignInFormAppear = false;
-    this.driverSignInFormAppear = true;
+    this.bringFalse();
+    setTimeout(() => {
+      this.customerSignInFormAppear = false;
+      this.sellerSignInFormAppear = false;
+      this.driverSignInFormAppear = true;
+      this.isLoading = false;
+    }, 2000);
   }
 
 }
