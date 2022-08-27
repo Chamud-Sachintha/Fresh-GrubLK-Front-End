@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomerAuthServiceService } from 'src/app/services/customer-services/customer-auth-service.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +14,16 @@ export class SignInComponent implements OnInit {
   driverSignInFormAppear = false;
   customerSignInFormAppear = true;
   isLoading = false;
-  constructor() { }
+
+  customerSignInForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private customerService: CustomerAuthServiceService,
+              private router: Router) { 
+    this.customerSignInForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -51,6 +63,15 @@ export class SignInComponent implements OnInit {
       this.driverSignInFormAppear = true;
       this.isLoading = false;
     }, 2000);
+  }
+
+  onSubmitCustomerCredentials() {
+    console.log(this.customerSignInForm.value);
+    if (this.customerService.signInCustomer(this.customerSignInForm.value)) {
+      this.router.navigate(['/app']);
+    } else {
+      this.router.navigate(['/auth']);
+    }
   }
 
 }
