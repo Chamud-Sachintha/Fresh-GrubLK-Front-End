@@ -8,7 +8,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { WebHeaderComponent } from './shared/web-header/web-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CustomerDashboardHeaderComponent } from './shared/customer-dashboard-header/customer-dashboard-header.component';
+import { DashboardHeaderComponent } from './shared/dashboard-header/dashboard-header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { CustomerDashboardHeaderComponent } from './shared/customer-dashboard-he
     AuthLayoutComponent,
     DashboardLayoutComponent,
     WebHeaderComponent,
-    CustomerDashboardHeaderComponent,
+    DashboardHeaderComponent,
   ],
   imports: [
     BrowserModule,
