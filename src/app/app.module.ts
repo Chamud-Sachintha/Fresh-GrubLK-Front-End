@@ -9,6 +9,9 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { WebHeaderComponent } from './shared/web-header/web-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardHeaderComponent } from './shared/dashboard-header/dashboard-header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,11 @@ import { DashboardHeaderComponent } from './shared/dashboard-header/dashboard-he
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

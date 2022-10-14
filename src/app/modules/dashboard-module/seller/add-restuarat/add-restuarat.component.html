@@ -1,0 +1,122 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Add New Restuarant</h2>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card" style="width: 58rem;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="card-title">Provide Restuarant General Details</h5>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-success" style="float: right;" routerLink="/app/seller/manage-restuarants">Manage All Restuarants</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <form action="" [formGroup]="this.restuarantAddForm" class="form-group" method="post"
+                        (ngSubmit)="onSubmitRestuarantAddForm()">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/color/48/000000/restaurant-.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Restuarant Name :</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="restuarantName">
+                            </div>
+
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/doodle/48/000000/document.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Restuarant Description :</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="restuarantDescription">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/doodle/48/000000/document.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Add Featured Image :</label>
+                                <input type="file" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    (change)="onChangeImage($event)">
+                            </div>
+                        </div>
+                        <!-- <img [src]="this.data" /> -->
+                        <div class="row mt-4">
+                            <h5 class="card-title">Add Address Details</h5>
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/fluency/48/000000/address.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Restuarant Address Line 1:</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="firstAddressLine">
+                            </div>
+
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/fluency/48/000000/address.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Restuarant Address Line 2:</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="secondAddressLine">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/clouds/100/000000/city.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Add City:</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="city">
+                            </div>
+
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/clouds/100/000000/city.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Add State:</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="state">
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <h5 class="card-title">Add Contact Details</h5>
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/fluency/48/000000/address.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Contact LAN Line 1:</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="lanLine">
+                            </div>
+
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <span><img src="https://img.icons8.com/fluency/48/000000/address.png"
+                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
+                                <label for="restuarantName">Restuarant Front Desk Mobile No.:</label>
+                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
+                                    formControlName="mobileNumber">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <input type="submit" class="btn btn-primary" value="Add New Restuarant">
+                                <input type="reset" class="btn btn-secondary ms-3" value="Reset Feilds">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -23,17 +23,37 @@ export class DashboardHeaderComponent implements OnInit {
     if (this.router.url.includes('customer')) {
       this.menuItems = [
         {
-          title: 'Home',
-          path: '/customer',
+          title: 'Dashboard',
+          path: '/app/customer',
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'View Wishlist',
-          path: '/view-wishlist',
+          title: 'See Menu (s) & Buy',
+          path: '/app/customer/buy',
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'Add Customer',
+          title: 'My Orders',
+          path: '/add-customer',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'My Cart',
+          path: '/manage-cart',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Add Coupons',
+          path: '/add-customer',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Profile Settings',
+          path: '/add-customer',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Sign Out',
           path: '/add-customer',
           class: 'fa fa-home mr-3'
         }
@@ -41,17 +61,42 @@ export class DashboardHeaderComponent implements OnInit {
     } else if (this.router.url.includes('seller')) {
       this.menuItems = [
         {
-          title: 'Home',
-          path: '/seller',
+          title: 'Dashboard',
+          path: '/app/seller',
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'View Wishlist',
-          path: '/view-wishlist',
+          title: 'Add Reatuarants & Manage',
+          path: '/app/seller/add-restuarant',
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'Add Seller',
+          title: 'Add Category',
+          path: '/app/seller/add-category',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Add Eatables',
+          path: '/add-seller',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Order Requests',
+          path: '/add-seller',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Add Offer & Manage',
+          path: '/add-seller',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Profile Settings',
+          path: '/add-seller',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Sign Out',
           path: '/add-seller',
           class: 'fa fa-home mr-3'
         }

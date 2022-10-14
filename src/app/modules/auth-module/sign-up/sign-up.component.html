@@ -32,24 +32,24 @@
                 <mat-spinner class="mt-5"></mat-spinner>
             </div>
         </div>
-        <form class="form-detail" action="#" method="post" *ngIf="this.isCustomerRegFormAppear">
+        <form [formGroup]="this.customerRegForm" class="form-detail" action="#" method="post" *ngIf="this.isCustomerRegFormAppear" (ngSubmit)="onSubmitCustomerRegForm()">
             <h2>Sign-Up</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
             <hr>
 
             <div class="col-12 mt-1">
                 <label for="emailAddress">Email Address</label>
-                <input type="email" class="form-control" name="emailAddress" placeholder="Eg. nimal123@gmail.com">
+                <input type="text" class="form-control" formControlName="emailAddress" placeholder="Eg. nimal123@gmail.com">
             </div>
 
             <div class="col-12 mt-1">
-                <label for="mobileNumber">Create Password</label>
-                <input type="password" class="form-control" placeholder="**************">
+                <label for="password">Create Password</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="**************" required>
             </div>
 
             <div class="col-12 mt-1">
-                <label for="mobileNumber">Confirm Password</label>
-                <input type="password" class="form-control" placeholder="**************">
+                <label for="confPassword">Confirm Password</label>
+                <input type="password" formControlName="confPassword" class="form-control" placeholder="**************" required>
             </div>
 
             <div class="col-12 mt-3">
@@ -63,7 +63,7 @@
             </div>
 
             <div class="col-12 mt-4">
-                <input type="submit" class="btn btn-primary" value="Sign Up As Customer" style="color: white;">
+                <input type="submit" class="btn btn-primary" value="Sign Up As Customer" style="color: white;" [disabled]="!this.customerRegForm.valid">
             </div>
 
             <div class="col-12 mt-3 text-center">
@@ -71,24 +71,24 @@
             </div>
         </form>
 
-        <form class="form-detail" action="#" method="post" *ngIf="this.isSellerRegFormAppear">
+        <form [formGroup]="this.sellerRegForm" class="form-detail" action="#" method="post" *ngIf="this.isSellerRegFormAppear" (ngSubmit)="onSubmitSellerRegForm()">
             <h2>Sign-Up As Seller</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
             <hr>
 
             <div class="col-12 mt-1">
                 <label for="emailAddress">Email Address</label>
-                <input type="email" class="form-control" name="emailAddress" placeholder="Eg. nimal123@gmail.com">
+                <input type="email" class="form-control" formControlName="emailAddress" placeholder="Eg. nimal123@gmail.com">
             </div>
 
             <div class="col-12 mt-1">
-                <label for="mobileNumber">Create Password</label>
-                <input type="password" class="form-control" placeholder="**************">
+                <label for="password">Create Password</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="**************">
             </div>
 
             <div class="col-12 mt-1">
-                <label for="mobileNumber">Confirm Password</label>
-                <input type="password" class="form-control" placeholder="**************">
+                <label for="confPassword">Confirm Password</label>
+                <input type="password" formControlName="confPassword" class="form-control" placeholder="**************">
             </div>
 
             <div class="col-12 mt-3">
@@ -102,7 +102,7 @@
             </div>
 
             <div class="col-12 mt-4">
-                <input type="submit" class="btn btn-primary" value="Sign Up As Customer" style="color: white;">
+                <input type="submit" class="btn btn-primary" value="Sign Up As Seller" style="color: white;">
             </div>
 
             <div class="col-12 mt-3 text-center">
@@ -141,7 +141,7 @@
             </div>
 
             <div class="col-12 mt-4">
-                <input type="submit" class="btn btn-primary" value="Sign Up As Customer" style="color: white;">
+                <input type="submit" class="btn btn-primary" value="Sign Up As Driver" style="color: white;">
             </div>
 
             <div class="col-12 mt-3 text-center">
