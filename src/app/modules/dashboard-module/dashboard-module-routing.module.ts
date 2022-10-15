@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExploreRestuarantComponent } from './customer/explore-restuarant/explore-restuarant.component';
 import { FoodOrderComponent } from './customer/food-order/food-order.component';
 import { HomeComponent } from './customer/home/home.component';
 import { AddCategoryComponent } from './seller/add-category/add-category.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'customer/buy',
         component: FoodOrderComponent
+      },
+      {
+        path: 'customer/buy/:id',
+        component: ExploreRestuarantComponent
       },
       
       {

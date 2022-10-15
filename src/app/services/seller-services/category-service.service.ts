@@ -14,4 +14,9 @@ export class CategoryServiceService {
     const path = "http://localhost:3000/category/add-category";
     return this.http.post(path, newCategoryDetails);
   }
+
+  getAllCategories(): Observable<any[]> {
+    const path = "http://localhost:3000/category/getAllCategories";
+    return this.http.get<any[]>(path);
+  }
 }

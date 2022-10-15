@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Restuarant } from 'src/app/shared/models/Restuarant';
 
 @Injectable({
@@ -23,6 +23,11 @@ export class RestuarantServiceService {
 
   getListOfRestuarantsBySellerId(sellerId: any): Observable<any[]> {
     const path = "http://localhost:3000/seller/restuarantsById/search?" + "sellerId=" + sellerId;
+    return this.http.get<any[]>(path);
+  }
+
+  getRestuarantByRestuarantId(restuarantId: string): Observable<any[]> {
+    const path = "http://localhost:3000/seller/restuarant/search?" + "restuarantId=" + restuarantId;
     return this.http.get<any[]>(path);
   }
 }

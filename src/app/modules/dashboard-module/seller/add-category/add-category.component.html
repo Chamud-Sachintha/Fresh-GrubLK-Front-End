@@ -36,4 +36,43 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of this.listOfCategories">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img [src]="category.imageFile" alt=""
+                                    style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ category.categoryName }}</p>
+                                    <!-- <p class="text-muted mb-0">{{ category.categoryDescription }}</p> -->
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ category.categoryDescription }}</p>
+                            <!-- <p class="text-muted mb-0">{{ restuarant.state }}</p> -->
+                        </td>
+                        <td>
+                            <span class="badge badge-secondary rounded-pill d-inline">Inactive</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-success btn-sm">Manage</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

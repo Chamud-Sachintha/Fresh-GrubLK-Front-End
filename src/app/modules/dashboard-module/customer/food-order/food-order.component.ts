@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
-import { Restuarant } from 'src/app/shared/models/Restuarant';
 
 @Component({
   selector: 'app-food-order',
@@ -12,7 +10,7 @@ export class FoodOrderComponent implements OnInit {
 
   allRestuarants: any[] = [];
 
-  constructor(private restuarantService: RestuarantServiceService, private domainSanitizer: DomSanitizer) { }
+  constructor(private restuarantService: RestuarantServiceService) { }
 
   ngOnInit(): void {
     this.getAllrestuarants();

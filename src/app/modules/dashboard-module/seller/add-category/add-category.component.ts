@@ -13,6 +13,8 @@ import { Category } from 'src/app/shared/models/Category';
 export class AddCategoryComponent implements OnInit {
 
   category = new Category();
+  listOfCategories: any[] = [];
+
   myImage!: Observable<any>;
   base64Code!: any;
   addCategoryForm!: FormGroup;
@@ -22,6 +24,8 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.createAddCategoryForm();
+    this.getAllAvailableCategories();
+    console.log(this.listOfCategories);
   }
 
   createAddCategoryForm() {
@@ -44,6 +48,20 @@ export class AddCategoryComponent implements OnInit {
     },
     (err) => {
       this.notify.error("There is An Error Occur in " + err);
+    });
+  }
+
+  getAllAvailableCategories() {
+    this.categoryService.getAllCategories().subscribe((resp) => {
+      resp.forEach((el) => {
+        let TYPED_ARRAY = new Uint8Array(el.categoryImage.data);
+        const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
+          return data + String.fromCharCode(byte);
+          }, '');
+
+        el.imageFile = STRING_CHAR
+        this.listOfCategories.push(el);
+      });
     });
   }
 
