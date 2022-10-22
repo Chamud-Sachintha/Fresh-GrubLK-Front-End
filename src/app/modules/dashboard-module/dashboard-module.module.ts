@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FoodOrderComponent } from './customer/food-order/food-order.component';
 import { ManageRestuarantsComponent } from './seller/manage-restuarants/manage-restuarants.component';
 import { ExploreRestuarantComponent } from './customer/explore-restuarant/explore-restuarant.component';
+import { AddEatablesComponent } from './seller/add-eatables/add-eatables.component';
+import { ManageEatablesComponent } from './seller/manage-eatables/manage-eatables.component';
+import { ManageCartComponent } from './customer/manage-cart/manage-cart.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { ExploreRestuarantComponent } from './customer/explore-restuarant/explor
     AddCategoryComponent,
     FoodOrderComponent,
     ManageRestuarantsComponent,
-    ExploreRestuarantComponent
+    ExploreRestuarantComponent,
+    AddEatablesComponent,
+    ManageEatablesComponent,
+    ManageCartComponent
   ],
   imports: [
     CommonModule,

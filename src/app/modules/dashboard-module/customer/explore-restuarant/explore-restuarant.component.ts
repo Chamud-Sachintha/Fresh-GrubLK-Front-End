@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
-import { Restuarant } from 'src/app/shared/models/Restuarant';
+import { Cart } from 'src/app/shared/models/Cart';
 
 @Component({
   selector: 'app-explore-restuarant',
@@ -10,14 +11,19 @@ import { Restuarant } from 'src/app/shared/models/Restuarant';
 })
 export class ExploreRestuarantComponent implements OnInit {
 
+  cart = new Cart();
   restuarantName!: string;
   featuredImage!: string;
   restuarantDescription!: string;
   restuarantAddress!: string;
   selectedRestuarantDetails: any[] = [];
+  getListCategoriesOfSelectedRestuarant: any[] = [];
+  getEatableListByRestuarant: any[] = [];
   restuarantId!: string;
+  eatableQuantity: number = 0;
 
-  constructor(private route: ActivatedRoute, private restuarantService: RestuarantServiceService) { }
+  constructor(private route: ActivatedRoute, private restuarantService: RestuarantServiceService,
+    private orderingService: OrderServiceService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -25,7 +31,35 @@ export class ExploreRestuarantComponent implements OnInit {
     });
 
     this.getSelectedRestuarantDetails();
-    console.log(this.selectedRestuarantDetails);
+    this.getCategoriesOfSelectedRestuarant();
+    this.getEatableListBySelectedRestuarant();
+  }
+
+  addeatableToCart(eatableId: string, quantity: string) {
+    this.cart.userId = sessionStorage.getItem("userId");
+    this.cart.eatableId = eatableId;
+    this.cart.eatableQuantity = parseInt(quantity);
+
+    this.orderingService.initializeUserCartOrAddeatablesToCart(this.cart).subscribe((resp) => {
+      console.log(resp);
+    },
+    (err) => {
+      console.log(err);
+    })
+  }
+
+  getEatableListBySelectedRestuarant() {
+    this.orderingService.getEatableListBySelectedRestuarant(this.restuarantId).subscribe((resp) => {
+      resp.forEach((el) => {
+        let TYPED_ARRAY = new Uint8Array(el.eatableFeaturedImage.data);
+        const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
+          return data + String.fromCharCode(byte);
+          }, '');
+
+        el.eatableFeaturedImage = STRING_CHAR
+        this.getEatableListByRestuarant.push(el);
+      });
+    });
   }
 
   getSelectedRestuarantDetails() {
@@ -35,7 +69,6 @@ export class ExploreRestuarantComponent implements OnInit {
         this.featuredImage = this.returnImageStringChar(el.imageFile.data);
         this.restuarantDescription = el.description;
         this.restuarantAddress = el.addressLineFirst;
-        console.log(el);
       })
     })
   }
@@ -47,6 +80,14 @@ export class ExploreRestuarantComponent implements OnInit {
     }, '');
 
     return STRING_CHAR;
+  }
+
+  getCategoriesOfSelectedRestuarant() {
+    this.orderingService.getCategoriesOfSelectedRestuarant(this.restuarantId).subscribe((resp) => {
+      resp.forEach((el) => {
+        this.getListCategoriesOfSelectedRestuarant.push(el);
+      });
+    });
   }
 
 }

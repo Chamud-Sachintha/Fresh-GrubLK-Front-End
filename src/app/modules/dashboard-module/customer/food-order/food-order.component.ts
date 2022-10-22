@@ -31,5 +31,4 @@ export class FoodOrderComponent implements OnInit {
       });
     });
   }
-
 }

@@ -33,13 +33,13 @@ export class DashboardHeaderComponent implements OnInit {
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'My Orders',
-          path: '/add-customer',
+          title: 'My Cart',
+          path: '/app/customer/cart',
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'My Cart',
-          path: '/manage-cart',
+          title: 'My Orders',
+          path: '/add-customer',
           class: 'fa fa-home mr-3'
         },
         {
@@ -77,7 +77,7 @@ export class DashboardHeaderComponent implements OnInit {
         },
         {
           title: 'Add Eatables',
-          path: '/add-seller',
+          path: '/app/seller/add-eatables',
           class: 'fa fa-home mr-3'
         },
         {

@@ -4,28 +4,81 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
+                    <div class="col-12">
+                        <h5 class="card-title"><img src="https://img.icons8.com/bubbles/50/000000/about.png"/>About the Restuarant</h5>
+                    </div>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <img [src]="this.featuredImage" class="img-fluid" alt="Responsive image">
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12" style="margin-top: -12px;">
-                        <h5>Restuarant Description</h5>
-                        <p>{{ this.restuarantDescription }}</p>
+                        <div>
+                            <h5><img src="https://img.icons8.com/bubbles/50/000000/outdoor-swimming-pool.png"/>Restuarant Description</h5>
+                            <p>{{ this.restuarantDescription }}</p>
+                        </div>
 
-                        <h5>Restuarant Address</h5>
-                        <p>{{ this.restuarantAddress }}</p>
+                        <div class="row">
+                            <div class="col-8">
+                                <h5><img src="https://img.icons8.com/bubbles/50/000000/map-marker.png"/>Restuarant Address</h5>
+                                <p>{{ this.restuarantAddress }}</p>
+                            </div>
+                            <div class="col-4">
+                                <h5><img src="https://img.icons8.com/bubbles/50/000000/city.png"/>City</h5>
+                                <p>{{ this.restuarantAddress }}</p>
+                            </div>
+                        </div>
 
-                        <h5>City</h5>
-                        <p>{{ this.restuarantAddress }}</p>
-
-                        <h5>Hot Line</h5>
-                        <p>{{ this.restuarantAddress }}</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <h5><img src="https://img.icons8.com/bubbles/50/000000/phone-not-being-used.png"/>Hot Line</h5>
+                                <p>{{ this.restuarantAddress }}</p>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-success btn-sm" style="margin-top: 40px; margin-left: 80px;">Ask Something</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <hr>
-                <h5>Available Categories</h5>
+                <hr style="border: 1px solid black;">
+                <div>
+                    <h5><img src="https://img.icons8.com/bubbles/50/000000/user-menu-female.png"/>Available Categories</h5>
+                </div>
 
-                
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 col-sm-12">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="{{ category.id }}" *ngFor="let category of this.getListCategoriesOfSelectedRestuarant">{{ category.categoryName }}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                        <input type="text" class="form-control" placeholder="Eg. Chicken Cheese Kottu">
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-sm-12">
+                        <button class="btn btn-primary btn-sm">Search Meals</button>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4 col-lg-4 col-sm-12" *ngFor="let eatable of this.getEatableListByRestuarant">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" [src]="eatable.eatableFeaturedImage" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ eatable.eatableName }}</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <div class="row">
+                                <div class="col-5">
+                                    <input type="number" class="form-control" #quantity min="0" [defaultValue]="0">
+                                </div>
+                                <div class="col-7">
+                                    <button class="btn btn-primary" (click)="addeatableToCart(eatable.id, quantity.value)">Add To Cart</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

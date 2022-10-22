@@ -1,0 +1,76 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Add Eastables & Manage</h2>
+    <hr style="width: 59rem;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="card-title">Provide Eatable Details and Add Eatable</h5>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-success" style="float: right;" routerLink="/app/seller/manage-eatables">Manage All Eatables Here</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <form action="" [formGroup]="addEatableForm" class="form-group" method="post" (ngSubmit)="onSubmitAddEatableForm()">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="">Type Eatable Name Here :</label>
+                                <input type="text" class="form-control" placeholder="Eg: Chicken Cheese Koththu" formControlName="eatableName">
+                            </div>
+
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="">Add Eatable Description : :</label>
+                                <input type="text" class="form-control" placeholder="Eg: Chicken Cheese Koththu" formControlName="eatableDescription">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="">Select Category :</label>
+                                <select class="form-select" aria-label="Default select example" formControlName="selectedCategory">
+                                    <option value="{{ category.id }}" *ngFor="let category of this.allAvailableCategories">{{ category.categoryName }}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="">Select Restuarant :</label>
+                                <select class="form-select" aria-label="Default select example" formControlName="selectedRestuarant">
+                                    <option value="{{ restuarant.id }}" *ngFor="let restuarant of this.allAvailableRestuarants">{{ restuarant.restuarantName }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="">Add Eatable Price :</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon1">LKR.</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Eg. 780.00" aria-label="Username" aria-describedby="basic-addon1" formControlName="eatablePrice">
+                                </div>
+                            </div>  
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="">Set Featured Image For Eatable :</label>
+                                <input type="file" class="form-control" (change)="onChangeImage($event)">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <input type="submit" class="btn btn-success" value="Add Eatable">
+                                <input type="reset" class="btn btn-warning ms-3" value="Reset Feilds">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

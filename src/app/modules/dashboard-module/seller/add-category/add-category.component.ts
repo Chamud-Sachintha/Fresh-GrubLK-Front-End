@@ -12,6 +12,7 @@ import { Category } from 'src/app/shared/models/Category';
 })
 export class AddCategoryComponent implements OnInit {
 
+  sellerId: any;
   category = new Category();
   listOfCategories: any[] = [];
 
@@ -39,6 +40,7 @@ export class AddCategoryComponent implements OnInit {
   onSubmitAddCategoryDetailsForm() {
     this.addCategoryForm.controls['categoryImage'].setValue(this.base64Code);
 
+    this.category.sellerId = sessionStorage.getItem("userId");
     this.category.categoryName = this.addCategoryForm.controls['categoryName'].value;
     this.category.categoryDescription = this.addCategoryForm.controls['categoryDescription'].value;
     this.category.categoryImage = this.addCategoryForm.controls['categoryImage'].value;
@@ -52,7 +54,8 @@ export class AddCategoryComponent implements OnInit {
   }
 
   getAllAvailableCategories() {
-    this.categoryService.getAllCategories().subscribe((resp) => {
+    this.sellerId = sessionStorage.getItem("userId");
+    this.categoryService.getAllCategoriesBySellerId(this.sellerId).subscribe((resp) => {
       resp.forEach((el) => {
         let TYPED_ARRAY = new Uint8Array(el.categoryImage.data);
         const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {

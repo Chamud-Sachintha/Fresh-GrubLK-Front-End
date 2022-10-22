@@ -88,6 +88,7 @@ export class SignInComponent implements OnInit {
 
     this.authService.signInCustomer(this.regModel).subscribe((resp) => {
       this.router.navigate(['/app']);
+      sessionStorage.setItem("userId", resp.id);
       this.notify.success("Sign-In Successfully.");
     },
     (err) => {
