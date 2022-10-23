@@ -10,7 +10,7 @@
                         <th>Eatable Category</th>
                         <th>Unit Price</th>
                         <th>Quantity</th>
-                        <th>Total</th>
+                        <th class="text-center">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,11 +36,24 @@
                             <input type="number" min="0" [defaultValue]="eatable.quantity" #quantity (change)="onChangeQantity(eatable.eatableId, quantity.value, eatable.eatablePrice)" class="form-control">
                         </td>
                         <td>
-                            <b><p class="fw-normal font-weight-bold">LKR . {{ eatable.total }} .00</p></b>
+                            <b><p class="fw-normal font-weight-bold" style="float: right">LKR . {{ eatable.total }} .00</p></b>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="row mt-3">
+                <div class="col-8">
+                    <button class="btn btn-success btn-sm" style="float: right;" (click)="onSubmitCheckout()">Checkout Order</button>
+                </div>
+                <div class="col-2">
+                    <h6 style="float: right;" class="mt-2">Sub Total</h6>
+                </div>
+                <div class="col-2">
+                    <p class="mt-2 font-weight-bold ms-4">LKR . {{ this.subTotal }} .00</p> 
+                </div>
+
+                <hr style="border: 1px solid grey;">
+            </div>
         </div>
     </div>
 </div>

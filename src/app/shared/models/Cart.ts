@@ -3,4 +3,5 @@ export class Cart {
     userId!: any
     eatableId!: string
     eatableQuantity!: number
+    total!: number
 }

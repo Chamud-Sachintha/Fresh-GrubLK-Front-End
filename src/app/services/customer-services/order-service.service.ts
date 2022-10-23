@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cart } from 'src/app/shared/models/Cart';
+import { OrderDetails } from 'src/app/shared/models/OrderDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,10 @@ export class OrderServiceService {
   getAllCartItemsByCustomer(userId: string): Observable<any[]> {
     const path = "http://localhost:3000/customer/getAllCartItemsByCustomer/search?" + "userId=" + userId;
     return this.http.get<any[]>(path);
+  }
+
+  placeNewOrderDetailsByCustomer(orderDetails: OrderDetails) {
+    const path = "http://localhost:3000/customer/placeOrder";
+    return this.http.post(path, orderDetails);
   }
 }

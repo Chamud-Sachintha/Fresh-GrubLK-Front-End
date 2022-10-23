@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
+import { Cart } from 'src/app/shared/models/Cart';
+import { OrderDetails } from 'src/app/shared/models/OrderDetails';
 
 @Component({
   selector: 'app-manage-cart',
@@ -8,18 +10,45 @@ import { OrderServiceService } from 'src/app/services/customer-services/order-se
 })
 export class ManageCartComponent implements OnInit {
 
+  orderDetails = new OrderDetails();
   selectedCartItems: any[] = [];
+  orderItemsList: Cart[] = [];
   userId!: any;
   total!: number;
   tmpQuantity!: number;
   tmpUnitPrice!: number;
   change!: string;
+  subTotal: number = 0;
 
   constructor(private orderingService: OrderServiceService) { }
 
   ngOnInit(): void {
     this.getCartItemsByCustomerId();
+
     console.log(this.selectedCartItems);
+  }
+
+  onSubmitCheckout() {
+    this.orderDetails.userId = sessionStorage.getItem("userId");
+    this.orderDetails.subTotal = this.subTotal;
+
+    this.selectedCartItems.forEach((el) => {
+      let cartItemsDetails = <Cart>{};
+      cartItemsDetails.eatableId = el.eatableId
+      cartItemsDetails.eatableQuantity = el.quantity
+      cartItemsDetails.total = el.total
+
+      this.orderItemsList.push(cartItemsDetails);
+    });
+
+    this.orderDetails.cartItemsList = this.orderItemsList;
+
+    this.orderingService.placeNewOrderDetailsByCustomer(this.orderDetails).subscribe((resp) => {
+      console.log(resp);
+    });
+
+    this.orderItemsList = []
+    this.orderDetails.cartItemsList = []
   }
 
   getCartItemsByCustomerId() {
@@ -36,6 +65,7 @@ export class ManageCartComponent implements OnInit {
         this.total = el.eatablePrice * el.quantity
         this.tmpQuantity = el.quantity;
         this.tmpUnitPrice = el.eatablePrice;
+        this.subTotal += this.total;
         Object.assign(el, {total: this.total});
 
         this.selectedCartItems.push(el);
@@ -44,10 +74,13 @@ export class ManageCartComponent implements OnInit {
   }
 
   onChangeQantity(eatableId: string, quantity: string, price: string) {
+    this.subTotal = 0;
     this.selectedCartItems.forEach((el) => {
       if (el.eatableId === eatableId) {
         el.total = parseInt(quantity) * parseInt(price)
       }
+
+      this.subTotal += parseInt(el.total)
     })
   }
 
