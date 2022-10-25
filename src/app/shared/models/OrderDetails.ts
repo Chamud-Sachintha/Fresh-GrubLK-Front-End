@@ -4,5 +4,7 @@ export class OrderDetails {
     id!: number
     userId!: any
     subTotal!: number
+    orderStatus!: string
     cartItemsList!: Cart[]
+    restuarantId!: string
 }

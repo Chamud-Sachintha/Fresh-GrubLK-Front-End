@@ -39,7 +39,7 @@ export class DashboardHeaderComponent implements OnInit {
         },
         {
           title: 'My Orders',
-          path: '/add-customer',
+          path: '/app/customer/orders',
           class: 'fa fa-home mr-3'
         },
         {
@@ -82,7 +82,7 @@ export class DashboardHeaderComponent implements OnInit {
         },
         {
           title: 'Order Requests',
-          path: '/add-seller',
+          path: '/app/seller/order-requests',
           class: 'fa fa-home mr-3'
         },
         {

@@ -1,0 +1,33 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Manage Your carts</h2>
+    <hr style="width: 60rem;">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card" *ngIf="this.allCartsList.length === 0">
+                <div class="card-body">
+                    <h5 class="text-center">There is No Carts For You</h5>
+                </div>
+            </div>
+            <div class="card" *ngFor="let eachCart of this.allCartsList">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="d-flex align-items-center">
+                                <img [src]="eachCart.imageFile" alt=""
+                                    style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ eachCart.restuarantName }}</p>
+                                    <p class="text-muted mb-0">{{ eachCart.city }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <button class="btn btn-primary btn-sm mt-2" style="float: right;" (click)="goToCartItemsPage(eachCart.restuarantId)">View Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
+import { OrderStatus } from 'src/app/shared/config/orderStatus';
 import { Cart } from 'src/app/shared/models/Cart';
 import { OrderDetails } from 'src/app/shared/models/OrderDetails';
 
@@ -10,6 +12,7 @@ import { OrderDetails } from 'src/app/shared/models/OrderDetails';
 })
 export class ManageCartComponent implements OnInit {
 
+  orderStatus = new OrderStatus();
   orderDetails = new OrderDetails();
   selectedCartItems: any[] = [];
   orderItemsList: Cart[] = [];
@@ -18,11 +21,16 @@ export class ManageCartComponent implements OnInit {
   tmpQuantity!: number;
   tmpUnitPrice!: number;
   change!: string;
+  restuarantId!: string;
   subTotal: number = 0;
 
-  constructor(private orderingService: OrderServiceService) { }
+  constructor(private orderingService: OrderServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.restuarantId = params['id']; // (+) converts string 'id' to a number
+    });
+
     this.getCartItemsByCustomerId();
 
     console.log(this.selectedCartItems);
@@ -31,6 +39,8 @@ export class ManageCartComponent implements OnInit {
   onSubmitCheckout() {
     this.orderDetails.userId = sessionStorage.getItem("userId");
     this.orderDetails.subTotal = this.subTotal;
+    this.orderDetails.orderStatus = this.orderStatus.PENDING_STATUS;
+    this.orderDetails.restuarantId = this.restuarantId;
 
     this.selectedCartItems.forEach((el) => {
       let cartItemsDetails = <Cart>{};
@@ -54,7 +64,7 @@ export class ManageCartComponent implements OnInit {
   getCartItemsByCustomerId() {
     this.userId = sessionStorage.getItem("userId");
     
-    this.orderingService.getAllCartItemsByCustomer(this.userId).subscribe((resp) => {
+    this.orderingService.getAllCartItemsByCustomer(this.userId, this.restuarantId).subscribe((resp) => {
       resp.forEach((el) => {
         let TYPED_ARRAY = new Uint8Array(el.eatableFeaturedImage.data);
         const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {

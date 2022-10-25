@@ -26,13 +26,23 @@ export class OrderServiceService {
     return this.http.post(path, cartDetails);
   }
 
-  getAllCartItemsByCustomer(userId: string): Observable<any[]> {
-    const path = "http://localhost:3000/customer/getAllCartItemsByCustomer/search?" + "userId=" + userId;
+  getAllCartItemsByCustomer(userId: string, restuarantId: string): Observable<any[]> {
+    const path = "http://localhost:3000/customer/getAllCartItemsByCustomerAndEachCart/search?" + "userId=" + userId + "&restuarantId=" + restuarantId;
     return this.http.get<any[]>(path);
   }
 
   placeNewOrderDetailsByCustomer(orderDetails: OrderDetails) {
     const path = "http://localhost:3000/customer/placeOrder";
     return this.http.post(path, orderDetails);
+  }
+
+  getAllOrdersByCustomerId(userId: string): Observable<any[]> {
+    const path = "http://localhost:3000/customer/getAllOrdersByCustomer?" + "userId=" + userId;
+    return this.http.get<any[]>(path);
+  }
+
+  getAllCartsByCustomerId(userId: string):Observable<any[]> {
+    const path = "http://localhost:3000/customer/getAllCartsByCustomerId/search?" + "userId=" + userId;
+    return this.http.get<any[]>(path);
   }
 }

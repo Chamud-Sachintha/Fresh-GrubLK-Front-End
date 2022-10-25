@@ -12,6 +12,10 @@ import { ExploreRestuarantComponent } from './customer/explore-restuarant/explor
 import { AddEatablesComponent } from './seller/add-eatables/add-eatables.component';
 import { ManageEatablesComponent } from './seller/manage-eatables/manage-eatables.component';
 import { ManageCartComponent } from './customer/manage-cart/manage-cart.component';
+import { OrdersComponent } from './customer/orders/orders.component';
+import { OrderRequestsComponent } from './seller/order-requests/order-requests.component';
+import { AllCartsComponent } from './customer/all-carts/all-carts.component';
+import { ManageOrderComponent } from './seller/manage-order/manage-order.component';
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { ManageCartComponent } from './customer/manage-cart/manage-cart.componen
     ExploreRestuarantComponent,
     AddEatablesComponent,
     ManageEatablesComponent,
-    ManageCartComponent
+    ManageCartComponent,
+    OrdersComponent,
+    OrderRequestsComponent,
+    AllCartsComponent,
+    ManageOrderComponent
   ],
   imports: [
     CommonModule,

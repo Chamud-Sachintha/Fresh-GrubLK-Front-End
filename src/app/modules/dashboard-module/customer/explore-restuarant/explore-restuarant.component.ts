@@ -39,6 +39,7 @@ export class ExploreRestuarantComponent implements OnInit {
     this.cart.userId = sessionStorage.getItem("userId");
     this.cart.eatableId = eatableId;
     this.cart.eatableQuantity = parseInt(quantity);
+    this.cart.restuarantId = this.restuarantId;
 
     this.orderingService.initializeUserCartOrAddeatablesToCart(this.cart).subscribe((resp) => {
       console.log(resp);
