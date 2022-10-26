@@ -16,6 +16,7 @@ import { OrdersComponent } from './customer/orders/orders.component';
 import { OrderRequestsComponent } from './seller/order-requests/order-requests.component';
 import { AllCartsComponent } from './customer/all-carts/all-carts.component';
 import { ManageOrderComponent } from './seller/manage-order/manage-order.component';
+import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ManageOrderComponent } from './seller/manage-order/manage-order.compone
     OrdersComponent,
     OrderRequestsComponent,
     AllCartsComponent,
-    ManageOrderComponent
+    ManageOrderComponent,
+    UpdateRestuarantComponent
   ],
   imports: [
     CommonModule,

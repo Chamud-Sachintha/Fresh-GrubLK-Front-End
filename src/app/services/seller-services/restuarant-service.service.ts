@@ -30,4 +30,14 @@ export class RestuarantServiceService {
     const path = "http://localhost:3000/seller/restuarant/search?" + "restuarantId=" + restuarantId;
     return this.http.get<any[]>(path);
   }
+
+  updaterestuarantDetailsByRestuarantId(newDetails: Restuarant, restuarantId: string): Observable<any[]> {
+    const path = "http://localhost:3000/seller/update-restuarant?" + "restuarantId=" + restuarantId;
+    return this.http.put<any[]>(path, newDetails);
+  }
+
+  deleteRestuarantByRestuarantId(restuarantId: string):Observable<any[]> {
+    const path = "http://localhost:3000/seller/delete-restuarant?" + "restuarantId=" + restuarantId;
+    return this.http.get<any[]>(path);
+  }
 }

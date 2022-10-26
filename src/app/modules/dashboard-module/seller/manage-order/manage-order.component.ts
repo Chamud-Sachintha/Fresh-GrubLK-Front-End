@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OrderRequestsService } from 'src/app/services/seller-services/order-requests.service';
 import { Restuarant } from 'src/app/shared/models/Restuarant';
 import { RestuarantServiceService } from '../../../../services/seller-services/restuarant-service.service';
 
@@ -12,16 +13,51 @@ export class ManageOrderComponent implements OnInit {
 
   restuarantDetails = new Restuarant();
   restuarantId!: any;
+  sellerId!: any;
   selectedrestuarantDetails: any[] = [];
+  allEatablesByOrder: any[] = []
+  totalAmount!: number;
+  currentOrderStatus!: string;
+  orderId!: string;
+  newOrderStatus!: string;
+  orderStatus!: string;
+  queryParamOrderId!: string;
 
-  constructor(private restuarantService: RestuarantServiceService, private route: ActivatedRoute) { }
+  constructor(private restuarantService: RestuarantServiceService, private route: ActivatedRoute ,
+              private orderRequestService: OrderRequestsService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.restuarantId = params['id']; // (+) converts string 'id' to a number
-    });
+    this.route.queryParams.subscribe((params) => {
+      this.queryParamOrderId = params['orderId'],
+      this.restuarantId = params['restuarantId']
+    })
 
     this.getSelectedRestuarantDetails();
+    this.getEatablesByRestuarantAndOrder();
+    console.log(this.allEatablesByOrder);
+  }
+
+  onUpdateOrderStatus(orderStatus: string) {
+    this.newOrderStatus = orderStatus == "1" ? "PRE" : "";
+    this.orderRequestService.manageOrderStatusByOrderId(this.orderId, this.newOrderStatus).subscribe((resp) => {
+      console.log(resp);
+    })
+  }
+
+  getEatablesByRestuarantAndOrder() {
+    this.sellerId = sessionStorage.getItem("userId");
+    
+    this.orderRequestService.getAlleatablesByEachRestuarantByEachOrder(this.queryParamOrderId).subscribe((resp) => {
+      resp.forEach((el) => {
+        this.allEatablesByOrder.push(el);
+      })
+
+      this.allEatablesByOrder.forEach((el) => {
+        this.totalAmount = el.subTotal
+        this.currentOrderStatus = el.orderStatus == "PEN" ? "Pending" : el.orderStatus == "PRE" ? "Preparering" : "";
+        this.orderId = el.orderId
+      })
+    })
   }
 
   getSelectedRestuarantDetails() {

@@ -14,6 +14,7 @@ import { ManageEatablesComponent } from './seller/manage-eatables/manage-eatable
 import { ManageOrderComponent } from './seller/manage-order/manage-order.component';
 import { ManageRestuarantsComponent } from './seller/manage-restuarants/manage-restuarants.component';
 import { OrderRequestsComponent } from './seller/order-requests/order-requests.component';
+import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
         component: ManageRestuarantsComponent
       },
       {
+        path: 'seller/update-restuarant/:id',
+        component: UpdateRestuarantComponent
+      },
+      {
         path: 'seller/add-category',
         component: AddCategoryComponent
       },
@@ -83,7 +88,7 @@ const routes: Routes = [
         component: OrderRequestsComponent
       },
       {
-        path: 'seller/manage-order/:id',
+        path: 'seller/manage-order',
         component: ManageOrderComponent
       }
     ]

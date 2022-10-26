@@ -4,6 +4,7 @@
 
     <div class="row">
         <div class="col-12">
+            <p class="font-weight-bold">New Order Requests</p>
             <table class="table align-middle mb-0 bg-white">
                 <thead class="bg-light">
                     <tr>
@@ -33,7 +34,50 @@
                             <span class="badge badge-secondary rounded-pill d-inline">{{ orderRequest.orderStatus == "PEN" ? "Pending" : "" }}</span>
                         </td>
                         <td>
-                            <button class="btn btn-success btn-sm" (click)="onManageOrder(orderRequest.RestuarantId)">Manage Order</button>
+                            <a href="#" class="btn btn-success btn-sm" [routerLink]="['/app/seller/manage-order']" [queryParams]="{ orderId: orderRequest.orderId, restuarantId: orderRequest.RestuarantId }">Manage Order</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row mt-3">
+        <div class="col-12">
+            <p class="font-weight-bold">Ongoing Order Requests</p>
+        </div>
+        <div class="col-12">
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let orderRequest of this.ongoingOrdersList">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img [src]="orderRequest.imageFile" alt=""
+                                    style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ orderRequest.restuarantName }}</p>
+                                    <!-- <p class="text-muted mb-0">{{ category.categoryDescription }}</p> -->
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">LKR . {{ orderRequest.subTotal }} .00</p>
+                            <!-- <p class="text-muted mb-0">{{ restuarant.state }}</p> -->
+                        </td>
+                        <td>
+                            <span class="badge badge-secondary rounded-pill d-inline">{{ orderRequest.orderStatus == "PEN" ? "Pending" : orderRequest.orderStatus == "PRE" ? "Preparing" : "" }}</span>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-sm" [routerLink]="['/app/seller/manage-order']" [queryParams]="{ orderId: orderRequest.orderId, restuarantId: orderRequest.RestuarantId }">Manage Order</a>
                         </td>
                     </tr>
                 </tbody>

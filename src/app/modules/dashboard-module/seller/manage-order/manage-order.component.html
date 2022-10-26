@@ -1,3 +1,71 @@
 <div id="content" class="p-4 p-md-5 pt-5">
-    <h2 class="mb-4">{{ this.restuarantDetails.restuarantName }}</h2>
+  <h2 class="mb-4">{{ this.restuarantDetails.restuarantName }}</h2>
+  <hr style="width: 60rem;">
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Eatable Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let eachEatable of this.allEatablesByOrder">
+            <th scope="row">{{ eachEatable.eatableId }}</th>
+            <td>{{ eachEatable.eatableName }}</td>
+            <td>LKR . {{ eachEatable.eatablePrice }} .00</td>
+            <td>{{ eachEatable.quantity }}</td>
+            <td>LKR . {{ eachEatable.total }} .00</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td>
+              <p class="font-weight-bold">Sub Total</p>
+              <p class="font-weight-bold">Order Status</p>
+            </td>
+            <td>
+              <p class="font-weight-bold">LKR . {{ this.totalAmount }} .00 </p>
+              <p class="font-weight-bold"> {{ this.currentOrderStatus }} </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <p class="font-weight-bold">Update Order Status Here</p>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-6">
+                  <select class="form-select" aria-label="Default select example" #orderStatus>
+                    <option selected>Open this select menu</option>
+                    <option value="1">Prepare</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-success btn-sm" (click)="onUpdateOrderStatus(orderStatus.value)">Update Status</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

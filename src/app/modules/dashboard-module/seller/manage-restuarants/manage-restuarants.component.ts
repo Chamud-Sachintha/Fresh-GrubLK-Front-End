@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
 import { Restuarant } from 'src/app/shared/models/Restuarant';
@@ -12,11 +13,25 @@ export class ManageRestuarantsComponent implements OnInit {
 
   sellerId!: any;
   listOfRestuarants : any[] = [];
-  constructor(private restuarantService: RestuarantServiceService, private notify: ToastrService) { }
+  constructor(private restuarantService: RestuarantServiceService, private notify: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getAllrestuarantsBySellerId();
     console.log(this.listOfRestuarants);
+  }
+
+  onClickUpdateRestuarant(restuarantId: string) {
+    this.router.navigate(['/app/seller/update-restuarant', restuarantId])
+  }
+
+  onClickDeleteRestuarant(restuarantId: string) {
+    this.restuarantService.deleteRestuarantByRestuarantId(restuarantId).subscribe((resp) => {
+      this.notify.success("Restuarant Details Delete Successfully.");
+    },
+    (err) => {
+      this.notify.error("There is an Error Occured");
+    })
   }
 
   getAllrestuarantsBySellerId() {
