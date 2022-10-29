@@ -1,0 +1,39 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Change Details of Category</h2>
+    <hr style="width: 60rem;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="width: 58rem;">
+                <div class="card-body">
+                    <form action="" class="form-group" [formGroup]="updateCategoryForm" (ngSubmit)="onSubmitAddCategoryDetailsForm()">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="categoryName">Category Name :</label>
+                                <input type="text" class="form-control" placeholder="Eg. Burgers/Kottu/Fried Rice" formControlName="categoryName">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="categoryName">Category Description :</label>
+                                <input type="text" class="form-control" placeholder="Eg. Burgers/Kottu/Fried Rice" formControlName="categoryDescription">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <label for="catImage">Add Category Featured Image</label>
+                                <input type="file" class="form-control" (change)="onChangeImage($event)">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <input type="submit" class="btn btn-primary" value="Update Category Details">
+                                <input type="reset" class="btn btn-secondary ms-3" value="Reset Feilds">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,6 +17,8 @@ import { OrderRequestsComponent } from './seller/order-requests/order-requests.c
 import { AllCartsComponent } from './customer/all-carts/all-carts.component';
 import { ManageOrderComponent } from './seller/manage-order/manage-order.component';
 import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
+import { UpdateCategoriesComponent } from './seller/update-categories/update-categories.component';
+import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { UpdateRestuarantComponent } from './seller/update-restuarant/update-res
     OrderRequestsComponent,
     AllCartsComponent,
     ManageOrderComponent,
-    UpdateRestuarantComponent
+    UpdateRestuarantComponent,
+    UpdateCategoriesComponent,
+    UpdateEatableComponent
   ],
   imports: [
     CommonModule,

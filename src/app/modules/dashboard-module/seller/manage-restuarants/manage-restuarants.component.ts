@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
-import { Restuarant } from 'src/app/shared/models/Restuarant';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FoodOrderComponent } from '../../customer/food-order/food-order.component';
 
 @Component({
   selector: 'app-manage-restuarants',
@@ -14,7 +15,7 @@ export class ManageRestuarantsComponent implements OnInit {
   sellerId!: any;
   listOfRestuarants : any[] = [];
   constructor(private restuarantService: RestuarantServiceService, private notify: ToastrService,
-              private router: Router) { }
+              private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllrestuarantsBySellerId();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscriber } from 'rxjs';
 import { CategoryServiceService } from 'src/app/services/seller-services/category-service.service';
@@ -21,12 +22,22 @@ export class AddCategoryComponent implements OnInit {
   addCategoryForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private categoryService: CategoryServiceService,
-              private notify: ToastrService) { }
+              private notify: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     this.createAddCategoryForm();
     this.getAllAvailableCategories();
     console.log(this.listOfCategories);
+  }
+
+  onClikcUpdateCategory(categoryId: string) {
+    this.router.navigate(['app/seller/update-category', categoryId]);
+  }
+
+  onClickDeleteCategory(categoryId: string) {
+    this.categoryService.deleteCategoryDetailsByCategoryId(categoryId).subscribe((resp) => {
+      console.log(resp);
+    })
   }
 
   createAddCategoryForm() {

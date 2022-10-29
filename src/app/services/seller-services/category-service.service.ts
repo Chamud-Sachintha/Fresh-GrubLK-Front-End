@@ -24,4 +24,19 @@ export class CategoryServiceService {
     const path = "http://localhost:3000/category/categoriesBySellerId?" + "sellerId=" + sellerId;
     return this.http.get<any[]>(path);
   }
+
+  getCategoryDetailsByCategoryId(categoryId: string):Observable<any[]> {
+    const path = "http://localhost:3000/category/categoriesByCategoryId?" + "categoryId=" + categoryId;
+    return this.http.get<any[]>(path);
+  }
+
+  manageSelectedCategoryDetailsByCategoryId(categoryId: string, newCategoryDetails: Category):Observable<any[]> {
+    const path = "http://localhost:3000/category/updateCategoryDetailsByCategoryId?" + "categoryId=" + categoryId;
+    return this.http.put<any[]>(path, newCategoryDetails);
+  }
+
+  deleteCategoryDetailsByCategoryId(categoryId: string) {
+    const path = "http://localhost:3000/category/deleteCategorydetailsByCategoryId?" + "categoryId=" + categoryId;
+    return this.http.get<any[]>(path);
+  }
 }

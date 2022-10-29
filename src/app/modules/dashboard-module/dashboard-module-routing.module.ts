@@ -14,6 +14,7 @@ import { ManageEatablesComponent } from './seller/manage-eatables/manage-eatable
 import { ManageOrderComponent } from './seller/manage-order/manage-order.component';
 import { ManageRestuarantsComponent } from './seller/manage-restuarants/manage-restuarants.component';
 import { OrderRequestsComponent } from './seller/order-requests/order-requests.component';
+import { UpdateCategoriesComponent } from './seller/update-categories/update-categories.component';
 import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
 
 const routes: Routes = [
@@ -74,6 +75,10 @@ const routes: Routes = [
       {
         path: 'seller/add-category',
         component: AddCategoryComponent
+      },
+      {
+        path: 'seller/update-category/:id',
+        component: UpdateCategoriesComponent
       },
       {
         path: 'seller/add-eatables',
