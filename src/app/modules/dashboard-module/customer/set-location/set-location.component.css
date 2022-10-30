@@ -1,0 +1,51 @@
+.container-map {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    bottom: 0;
+    top: 0;
+    left: 0;
+}
+.i-map {
+    width: 100%;
+}
+.map-overlay-c {
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    left: 50px;
+    width: 322px;
+}
+.m-controls {
+    display: flex;
+}
+.m-controls button {
+    border: solid 1px #ebeffd;
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    box-shadow: 0 2px 5px 0 rgba(234, 239, 250, 0.43);
+}
+.m-controls button img {
+    width: 21px;
+}
+.pac-item {
+    background: #ccc;
+    padding: 20px;
+}
+.input-trans-s {
+    width: 100%;
+    position: relative;
+    bottom: 5px;
+    border: none;
+    padding-left: 10px;
+}
+
+.input-box {
+    border: 1px solid black;
+}

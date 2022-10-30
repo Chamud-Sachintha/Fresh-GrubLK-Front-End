@@ -49,7 +49,7 @@ export class DashboardHeaderComponent implements OnInit {
         },
         {
           title: 'Profile Settings',
-          path: '/add-customer',
+          path: '/app/customer/profile',
           class: 'fa fa-home mr-3'
         },
         {

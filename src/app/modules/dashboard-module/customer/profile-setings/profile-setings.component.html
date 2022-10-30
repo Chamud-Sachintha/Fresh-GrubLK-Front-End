@@ -1,0 +1,65 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Manage Your Profile</h2>
+    <hr style="width: 60rem;">
+
+    <div class="alert alert-info" role="alert">
+        Please Give Correct Information for Below Feilds.
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="profileDetailsForm" action="" class="form-group" method="post" (ngSubmit)="onSubmitProfileDetailsForm()">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="fullName">Type Full Name :</label>
+                                <input type="text" class="form-control" placeholder="Eg. Nimal Nishantha" formControlName="fullName">
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="emailAddress">Email Address :</label>
+                                <input type="text" class="form-control" placeholder="Eg. nimal123@gmail.com" formControlName="emailAddress" [readonly]="true">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <label for="mobileNumber">Type Your Mobile Number :</label>
+                                <input type="text" class="form-control" placeholder="Eg. 012-12345678" formControlName="mobileNumber">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="location">Set Your Location :</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Eg. Kadawatha, Sri Lanka"
+                                        aria-label="Username" aria-describedby="basic-addon1"
+                                        formControlName="location">
+                                    <div class="input-group-prepend" (click)="openMapDialog()">
+                                        <span class="input-group-text" id="basic-addon1"><img
+                                                src="https://img.icons8.com/bubbles/50/000000/user-location.png"
+                                                style="width: 20px; height: 20px; cursor: pointer;" /></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <label for="profileImage">Set Profile Image :</label>
+                                    <input type="file" class="form-control"  (change)="onChangeImage($event)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-2">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Save Profile Details">
+                            </div>
+                            <div class="col-10">
+                                <input type="reset" class="btn btn-warning btn-sm" value="Reset Profile Details">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

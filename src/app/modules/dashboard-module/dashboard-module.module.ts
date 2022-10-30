@@ -19,6 +19,8 @@ import { ManageOrderComponent } from './seller/manage-order/manage-order.compone
 import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
 import { UpdateCategoriesComponent } from './seller/update-categories/update-categories.component';
 import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.component';
+import { ProfileSetingsComponent } from './customer/profile-setings/profile-setings.component';
+import { SetLocationComponent } from './customer/set-location/set-location.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.c
     ManageOrderComponent,
     UpdateRestuarantComponent,
     UpdateCategoriesComponent,
-    UpdateEatableComponent
+    UpdateEatableComponent,
+    ProfileSetingsComponent,
+    SetLocationComponent
   ],
   imports: [
     CommonModule,
