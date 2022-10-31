@@ -43,8 +43,7 @@ export class UpdateRestuarantComponent implements OnInit {
         this.restuarantUpdateForm.controls['restuarantDescription'].setValue(el.description);
         this.restuarantUpdateForm.controls['firstAddressLine'].setValue(el.addressLineFirst);
         this.restuarantUpdateForm.controls['secondAddressLine'].setValue(el.addressLineSecond);
-        this.restuarantUpdateForm.controls['city'].setValue(el.city);
-        this.restuarantUpdateForm.controls['state'].setValue(el.state);
+        this.restuarantUpdateForm.controls['location'].setValue(el.location);
         this.restuarantUpdateForm.controls['mobileNumber'].setValue(el.frontMobile);
         this.restuarantUpdateForm.controls['lanLine'].setValue(el.landMobile);
 
@@ -66,8 +65,7 @@ export class UpdateRestuarantComponent implements OnInit {
       featuredImage: ['', Validators.required],
       firstAddressLine: ['', Validators.required],
       secondAddressLine: '',
-      city: ['', Validators.required],
-      state: ['', Validators.required],
+      location: ['', Validators.required],
       lanLine: ['', Validators.required],
       mobileNumber: ['', Validators.required]
     });
@@ -84,8 +82,7 @@ export class UpdateRestuarantComponent implements OnInit {
     this.restuarant.featuredImage = this.restuarantUpdateForm.controls['featuredImage'].value;
     this.restuarant.firstAddressLine = this.restuarantUpdateForm.controls['firstAddressLine'].value;
     this.restuarant.secondAddressLine = this.restuarantUpdateForm.controls['secondAddressLine'].value;
-    this.restuarant.city = this.restuarantUpdateForm.controls['city'].value;
-    this.restuarant.state = this.restuarantUpdateForm.controls['state'].value;
+    this.restuarant.location = this.restuarantUpdateForm.controls['location'].value;
     this.restuarant.lanLine = this.restuarantUpdateForm.controls['lanLine'].value;
     this.restuarant.mobileNumber = this.restuarantUpdateForm.controls['mobileNumber'].value;
 

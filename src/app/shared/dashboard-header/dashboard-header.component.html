@@ -5,14 +5,14 @@
     </div>
     <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
         <div class="user-logo">
-            <div class="img" style="background-image: url(assets/customer_dashboard/images/logo.jpg);"></div>
-            <h3>Catriona Henderson</h3>
+            <div *ngIf="this.profileDetails.profileImage" class="img" style="background-image: url(assets/customer_dashboard/images/logo.jpg);"></div>
+            <div *ngIf="!this.profileDetails.profileImage" class="img" style="background-image: url(assets/avatars/no-profile.png);"></div>
+            <h3>{{ this.profileDetails.fullName != null ? this.profileDetails.fullName : "Sample User"  }}</h3>
         </div>
     </div>
-    <ul class="list-unstyled components mb-5">
+    <ul class="list-unstyled components mb-5" *ngIf="this.profileDetails.fullName">
         <li *ngFor="let eachMenuItem of this.menuItems">
             <a href="#" [routerLink]="eachMenuItem.path"><span [ngClass]="eachMenuItem.class"></span> {{ eachMenuItem.title }}</a>
         </li>
     </ul>
-
 </nav>

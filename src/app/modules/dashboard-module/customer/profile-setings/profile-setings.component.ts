@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscriber } from 'rxjs';
 import { MapServiceService } from 'src/app/services/map-service.service';
@@ -15,16 +16,32 @@ export class ProfileSetingsComponent implements OnInit {
 
   profileDetails = new Profile();
   userId!: any;
+  role!: any;
   base64Code!: string;
   profileDetailsForm!: FormGroup;
 
   constructor(private mapService: MapServiceService, private formBuilder: FormBuilder, private profileService: ProfileServiceService,
-              private notify: ToastrService) { }
+              private notify: ToastrService,private route: Router) { }
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem("userId");
     this.createAddProfileDetailsForm();
+    this.getExistProfileDetails();
     this.profileDetailsForm.controls['emailAddress'].setValue(sessionStorage.getItem("userEmail"));
+  }
+
+  getExistProfileDetails() {
+    this.role = sessionStorage.getItem("role");
+
+    this.profileService.getProfileDetailsByUserId(this.userId, this.role).subscribe((resp) => {
+      if (resp.length !== 0) {
+        resp.forEach((el) => {
+          this.profileDetailsForm.controls['fullName'].setValue(el.fullName);
+          this.profileDetailsForm.controls['mobileNumber'].setValue(el.mobileNumber);
+          this.profileDetailsForm.controls['location'].setValue(el.location);
+        })
+      }
+    });
   }
 
   onSubmitProfileDetailsForm() {
@@ -36,9 +53,13 @@ export class ProfileSetingsComponent implements OnInit {
     this.profileDetails.mobileNumber = this.profileDetailsForm.controls['mobileNumber'].value;
     this.profileDetails.location = this.profileDetailsForm.controls['location'].value;
     this.profileDetails.profileImage = this.profileDetailsForm.controls['profileImage'].value;
+    this.profileDetails.role = sessionStorage.getItem("role");
 
     this.profileService.addNewProfileDetails(this.profileDetails).subscribe((resp) => {
       this.notify.success("Profile details Added Successfully.");
+      this.route.navigate(['app/customer']).then(() => {
+        location.reload();
+      })
     },(err) => {
       this.notify.error("There is an Error Occured.");
     })

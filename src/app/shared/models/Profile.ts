@@ -5,4 +5,5 @@ export class Profile {
     mobileNumber!: string
     location!: string
     profileImage!: string
+    role!: any
 }

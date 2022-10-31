@@ -1,4 +1,4 @@
-export const API_KEY = 'AIzaSyBUfYYndjqv7g4ZGY3cHe4i0sElKC5EllQ';
+export const API_KEY = '';
 export const ZOOM_LEVEL = 7;
 export const DEFAULT_LOCATION = { lat: 6.9271, lng: 79.8612};
 // export const =

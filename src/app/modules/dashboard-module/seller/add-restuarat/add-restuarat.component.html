@@ -10,7 +10,8 @@
                             <h5 class="card-title">Provide Restuarant General Details</h5>
                         </div>
                         <div class="col-4">
-                            <button class="btn btn-success" style="float: right;" routerLink="/app/seller/manage-restuarants">Manage All Restuarants</button>
+                            <button class="btn btn-success" style="float: right;"
+                                routerLink="/app/seller/manage-restuarants">Manage All Restuarants</button>
                         </div>
                     </div>
 
@@ -72,17 +73,17 @@
                             <div class="col-md-6 col-lg-6 col-sm-12">
                                 <span><img src="https://img.icons8.com/clouds/100/000000/city.png"
                                         style="width: 35px; height: 35px; margin-right: 5px;" /></span>
-                                <label for="restuarantName">Add City:</label>
-                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
-                                    formControlName="city">
-                            </div>
-
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <span><img src="https://img.icons8.com/clouds/100/000000/city.png"
-                                        style="width: 35px; height: 35px; margin-right: 5px;" /></span>
-                                <label for="restuarantName">Add State:</label>
-                                <input type="text" class="form-control" placeholder="Eg. ABC Restuarants"
-                                    formControlName="state">
+                                <label for="restuarantName">Add Location:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Eg. Kadawatha, Sri Lanka"
+                                        aria-label="Username" aria-describedby="basic-addon1"
+                                        formControlName="location">
+                                    <div class="input-group-prepend" (click)="openMapDialog()">
+                                        <span class="input-group-text" id="basic-addon1"><img
+                                                src="https://img.icons8.com/bubbles/50/000000/user-location.png"
+                                                style="width: 20px; height: 20px; cursor: pointer;" /></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

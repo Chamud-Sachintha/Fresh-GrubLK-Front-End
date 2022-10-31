@@ -5,8 +5,7 @@ export class Restuarant{
     featuredImage!: string
     firstAddressLine!: string
     secondAddressLine!: string
-    city!: string
-    state!: string
+    location!: string
     lanLine!: string
     mobileNumber!: string
 }

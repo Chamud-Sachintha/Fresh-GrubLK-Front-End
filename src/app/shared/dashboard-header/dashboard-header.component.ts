@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { ProfileServiceService } from 'src/app/services/profile-service.service';
+import { Profile } from '../models/Profile';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -10,13 +12,17 @@ import * as $ from 'jquery';
 export class DashboardHeaderComponent implements OnInit {
 
   menuItems = [{title: '',path: '', class: ''}];
+  profileDetails = new Profile();
+  userId!: any;
+  userRole!: any;
   isSellerDashboardView!: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private profileService: ProfileServiceService) { }
 
   ngOnInit(): void {
     this.menuCollapse();
     this.loadMainMenuItems();
+    this.getProfileDetails();
   }
 
   loadMainMenuItems() {
@@ -102,6 +108,17 @@ export class DashboardHeaderComponent implements OnInit {
         }
       ];
     }
+  }
+
+  getProfileDetails() {
+    this.userId = sessionStorage.getItem("userId");
+    this.userRole = sessionStorage.getItem("role");
+
+    this.profileService.getProfileDetailsByUserId(this.userId, this.userRole).subscribe((resp) => {
+      resp.forEach((el) => {
+        this.profileDetails.fullName = el.fullName
+      })
+    })
   }
 
   menuCollapse() {

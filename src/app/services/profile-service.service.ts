@@ -14,4 +14,9 @@ export class ProfileServiceService {
     const path = "http://localhost:3000/profile/addNewProfileDetails";
     return this.http.post<any[]>(path, profileDetails);
   }
+
+  getProfileDetailsByUserId(userId: string, role: string):Observable<any[]> {
+    const path = "http://localhost:3000/profile/getProfileDetailsByUserId?" + "userId=" + userId + "&role=" + role;
+    return this.http.get<any[]>(path);
+  }
 }

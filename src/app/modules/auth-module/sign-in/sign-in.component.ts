@@ -90,6 +90,7 @@ export class SignInComponent implements OnInit {
       this.router.navigate(['/app']);
       sessionStorage.setItem("userId", resp.id);
       sessionStorage.setItem("userEmail", resp.emailAddress);
+      sessionStorage.setItem("role", 'C');
       this.notify.success("Sign-In Successfully.");
     },
     (err) => {
@@ -110,6 +111,7 @@ export class SignInComponent implements OnInit {
       this.router.navigate(['/app/seller']);
       sessionStorage.setItem("userId", resp.id);
       sessionStorage.setItem("username" ,resp.emailAddress);
+      sessionStorage.setItem("role", 'S');
       this.notify.success("Sign-In Successfully.");
     },
     (err) => {
