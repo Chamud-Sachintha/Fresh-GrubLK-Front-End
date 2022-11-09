@@ -6,6 +6,8 @@ export class Restuarant{
     firstAddressLine!: string
     secondAddressLine!: string
     location!: string
+    lat!: string
+    long!: string
     lanLine!: string
     mobileNumber!: string
 }

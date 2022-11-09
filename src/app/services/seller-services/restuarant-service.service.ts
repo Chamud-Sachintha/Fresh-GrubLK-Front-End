@@ -15,8 +15,8 @@ export class RestuarantServiceService {
     return this.http.post(path, newRestuarant);
   }
 
-  getListOfrestuarants(): Observable<any[]> {
-    const path = "http://localhost:3000/seller/restuarants";
+  getListOfrestuarants(lat: string, long: string): Observable<any[]> {
+    const path = "http://localhost:3000/seller/restuarants?" + "lat=" + lat + "&long=" + long;
     // return this.http.get<Restuarant[]>(path);
     return this.http.get<any[]>(path);
   }
@@ -38,6 +38,11 @@ export class RestuarantServiceService {
 
   deleteRestuarantByRestuarantId(restuarantId: string):Observable<any[]> {
     const path = "http://localhost:3000/seller/delete-restuarant?" + "restuarantId=" + restuarantId;
+    return this.http.get<any[]>(path);
+  }
+
+  getResuarantsBySearchType(searchType: string, searchValue: string):Observable<any[]> {
+    const path = "http://localhost:3000/seller/restuarantsByType/search?" + "searchType=" + searchType + "&searchValue=" + searchValue;
     return this.http.get<any[]>(path);
   }
 }

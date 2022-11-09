@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
 
 @Component({
@@ -11,12 +12,16 @@ export class OrdersComponent implements OnInit {
   listOfOrders: any[] = []
   userId: any;
   usermail!: any;
-  constructor(private orderingService: OrderServiceService) { }
+  constructor(private orderingService: OrderServiceService, private route: Router) { }
 
   ngOnInit(): void {
     // this.usermail = 
     this.getAllOrdersByCustomerId()
     console.log(this.listOfOrders);
+  }
+
+  onClickViewOrder(orderId: string) {
+    this.route.navigate(['app/customer/view-order', orderId]);
   }
 
   getAllOrdersByCustomerId() {

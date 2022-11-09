@@ -26,4 +26,9 @@ export class EatableServiceService {
     const path = "http://localhost:3000/eatable/getEatableDetailsByEatableId?" + "eatableId=" + eatableId;
     return this.http.get<any[]>(path);
   }
+
+  getEatablesByOrderId(orderId: string): Observable<any[]> {
+    const path = "http://localhost:3000/eatable/getEatablesByOrderId?" + "orderId=" + orderId;
+    return this.http.get<any[]>(path);
+  }
 }

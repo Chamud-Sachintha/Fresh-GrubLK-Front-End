@@ -1,0 +1,75 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">View Order ID # {{ this.orderId }}</h2>
+    <hr style="width: 60rem;">
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Eatable Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let eachEatable of this.selectedEatableDetails">
+                        <th scope="row">{{ eachEatable.eatableId }}</th>
+                        <td>{{ eachEatable.eatableName }}</td>
+                        <td>LKR . {{ eachEatable.eatablePrice }} .00</td>
+                        <td>{{ eachEatable.quantity }}</td>
+                        <td>LKR . {{ eachEatable.total }} .00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <p class="font-weight-bold">Sub Total</p>
+                            <p class="font-weight-bold">Order Status</p>
+                        </td>
+                        <td>
+                            <p class="font-weight-bold">LKR . {{ this.orderSubTotal }} .00 </p>
+                            <p class="font-weight-bold"> {{ this.orderStatus }} </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-1">
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Restuarant Details</h5>
+                    <hr style="border: 1px solid black;">
+                    <div *ngIf="!this.isRestuarantDetailsHave">
+                        <p>There is No Data About Restuarant</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <img [src]="this.restuarantDetails.featuredImage" alt="" style="width: 420px; height: 200px;">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h6 class="card-subtitle">{{ this.restuarantDetails.restuarantName }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Delivery Details</h5>
+                    <hr style="border: 1px solid black;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

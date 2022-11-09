@@ -16,6 +16,8 @@ export class AddRestuaratComponent implements OnInit {
   restuarant = new Restuarant();
   myImage!: Observable<any>;
   base64Code!: any;
+  lat!: string;
+  long!: string;
   restuarantAddForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private restuarantService: RestuarantServiceService
@@ -51,6 +53,8 @@ export class AddRestuaratComponent implements OnInit {
     this.restuarant.location = this.restuarantAddForm.controls['location'].value;
     this.restuarant.lanLine = this.restuarantAddForm.controls['lanLine'].value;
     this.restuarant.mobileNumber = this.restuarantAddForm.controls['mobileNumber'].value;
+    this.restuarant.lat = this.lat;
+    this.restuarant.long = this.long;
 
     console.log(this.restuarant);
     this.restuarantService.addNewRestuarant(this.restuarant).subscribe(resp => {
@@ -65,6 +69,8 @@ export class AddRestuaratComponent implements OnInit {
     this.mapService.openMapDialog().afterClosed().subscribe((resp) => {
       if (resp) {
         this.restuarantAddForm.controls['location'].setValue(resp.address);
+        this.lat = resp.marker.latitude;
+        this.long = resp.marker.longitude;
       }
     })
   }

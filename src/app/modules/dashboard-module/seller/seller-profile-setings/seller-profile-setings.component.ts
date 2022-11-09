@@ -8,11 +8,11 @@ import { ProfileServiceService } from 'src/app/services/profile-service.service'
 import { Profile } from 'src/app/shared/models/Profile';
 
 @Component({
-  selector: 'app-profile-setings',
-  templateUrl: './profile-setings.component.html',
-  styleUrls: ['./profile-setings.component.css']
+  selector: 'app-seller-profile-setings',
+  templateUrl: './seller-profile-setings.component.html',
+  styleUrls: ['./seller-profile-setings.component.css']
 })
-export class ProfileSetingsComponent implements OnInit {
+export class SellerProfileSetingsComponent implements OnInit {
 
   profileDetails = new Profile();
   userId!: any;
@@ -29,7 +29,8 @@ export class ProfileSetingsComponent implements OnInit {
     this.userId = sessionStorage.getItem("userId");
     this.createAddProfileDetailsForm();
     this.getExistProfileDetails();
-    this.profileDetailsForm.controls['emailAddress'].setValue(sessionStorage.getItem("userEmail"));
+    console.log(sessionStorage.getItem("username"));
+    this.profileDetailsForm.controls['emailAddress'].setValue(sessionStorage.getItem("username"));
   }
 
   getExistProfileDetails() {
@@ -61,7 +62,7 @@ export class ProfileSetingsComponent implements OnInit {
 
     this.profileService.addNewProfileDetails(this.profileDetails).subscribe((resp) => {
       this.notify.success("Profile details Added Successfully.");
-      this.route.navigate(['app/customer']).then(() => {
+      this.route.navigate(['app/seller']).then(() => {
         location.reload();
       })
     },(err) => {

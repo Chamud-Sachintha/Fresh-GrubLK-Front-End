@@ -98,7 +98,7 @@ export class DashboardHeaderComponent implements OnInit {
         },
         {
           title: 'Profile Settings',
-          path: '/add-seller',
+          path: '/app/seller/profile',
           class: 'fa fa-home mr-3'
         },
         {
@@ -117,6 +117,8 @@ export class DashboardHeaderComponent implements OnInit {
     this.profileService.getProfileDetailsByUserId(this.userId, this.userRole).subscribe((resp) => {
       resp.forEach((el) => {
         this.profileDetails.fullName = el.fullName
+        sessionStorage.setItem("lat", el.lat);
+        sessionStorage.setItem("long", el.long);
       })
     })
   }

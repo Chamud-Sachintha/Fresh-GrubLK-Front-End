@@ -33,7 +33,7 @@
                             <span class="badge badge-primary rounded-pill d-inline">{{ category.orderStatus == "PEN" ? "Pending" : category.orderStatus == "PRE" ? "Preparing" : "" }}</span>
                         </td>
                         <td>
-                            <button class="btn btn-success btn-sm">Manage</button>
+                            <button class="btn btn-success btn-sm" (click)="onClickViewOrder(category.id)">View Order</button>
                         </td>
                     </tr>
                 </tbody>

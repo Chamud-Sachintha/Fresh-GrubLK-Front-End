@@ -4,6 +4,8 @@ export class Profile {
     emailAddress!: string
     mobileNumber!: string
     location!: string
+    lat!: string
+    long!: string
     profileImage!: string
     role!: any
 }

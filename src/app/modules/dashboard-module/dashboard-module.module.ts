@@ -21,6 +21,8 @@ import { UpdateCategoriesComponent } from './seller/update-categories/update-cat
 import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.component';
 import { ProfileSetingsComponent } from './customer/profile-setings/profile-setings.component';
 import { SetLocationComponent } from './customer/set-location/set-location.component';
+import { ViewOrderComponent } from './customer/view-order/view-order.component';
+import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/seller-profile-setings.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { SetLocationComponent } from './customer/set-location/set-location.compo
     UpdateCategoriesComponent,
     UpdateEatableComponent,
     ProfileSetingsComponent,
-    SetLocationComponent
+    SetLocationComponent,
+    ViewOrderComponent,
+    SellerProfileSetingsComponent
   ],
   imports: [
     CommonModule,

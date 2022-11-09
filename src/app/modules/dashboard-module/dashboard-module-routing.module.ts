@@ -8,6 +8,7 @@ import { ManageCartComponent } from './customer/manage-cart/manage-cart.componen
 import { OrdersComponent } from './customer/orders/orders.component';
 import { ProfileSetingsComponent } from './customer/profile-setings/profile-setings.component';
 import { SetLocationComponent } from './customer/set-location/set-location.component';
+import { ViewOrderComponent } from './customer/view-order/view-order.component';
 import { AddCategoryComponent } from './seller/add-category/add-category.component';
 import { AddEatablesComponent } from './seller/add-eatables/add-eatables.component';
 import { AddRestuaratComponent } from './seller/add-restuarat/add-restuarat.component';
@@ -16,6 +17,7 @@ import { ManageEatablesComponent } from './seller/manage-eatables/manage-eatable
 import { ManageOrderComponent } from './seller/manage-order/manage-order.component';
 import { ManageRestuarantsComponent } from './seller/manage-restuarants/manage-restuarants.component';
 import { OrderRequestsComponent } from './seller/order-requests/order-requests.component';
+import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/seller-profile-setings.component';
 import { UpdateCategoriesComponent } from './seller/update-categories/update-categories.component';
 import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.component';
 import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
@@ -53,6 +55,10 @@ const routes: Routes = [
       {
         path: 'customer/orders',
         component: OrdersComponent
+      },
+      {
+        path: 'customer/view-order/:id',
+        component: ViewOrderComponent
       },
       {
         path: 'customer/profile',
@@ -106,6 +112,10 @@ const routes: Routes = [
       {
         path: 'seller/manage-order',
         component: ManageOrderComponent
+      },
+      {
+        path: 'seller/profile',
+        component: SellerProfileSetingsComponent
       }
     ]
   }
