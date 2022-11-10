@@ -23,6 +23,7 @@ import { ProfileSetingsComponent } from './customer/profile-setings/profile-seti
 import { SetLocationComponent } from './customer/set-location/set-location.component';
 import { ViewOrderComponent } from './customer/view-order/view-order.component';
 import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/seller-profile-setings.component';
+import { DriverProfileSettingsComponent } from './driver/driver-profile-settings/driver-profile-settings.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/s
     ProfileSetingsComponent,
     SetLocationComponent,
     ViewOrderComponent,
-    SellerProfileSetingsComponent
+    SellerProfileSetingsComponent,
+    DriverProfileSettingsComponent
   ],
   imports: [
     CommonModule,

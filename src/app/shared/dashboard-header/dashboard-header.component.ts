@@ -107,6 +107,24 @@ export class DashboardHeaderComponent implements OnInit {
           class: 'fa fa-home mr-3'
         }
       ];
+    } else if (this.router.url.includes('driver')) {
+      this.menuItems = [
+        {
+          title: 'Dashboard',
+          path: '/app/driver',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Profile Settings',
+          path: '/app/driver/profile',
+          class: 'fa fa-home mr-3'
+        },
+        {
+          title: 'Sign-Out',
+          path: '/app/driver',
+          class: 'fa fa-home mr-3'
+        }
+      ];
     }
   }
 

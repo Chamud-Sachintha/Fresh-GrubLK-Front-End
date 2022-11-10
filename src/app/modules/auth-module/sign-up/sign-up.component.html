@@ -110,24 +110,24 @@
             </div>
         </form>
 
-        <form class="form-detail" action="#" method="post" *ngIf="this.isDriverRegFormAppear">
+        <form [formGroup]="driverRegForm" class="form-detail" action="#" method="post" *ngIf="this.isDriverRegFormAppear" (ngSubmit)="onSubmitDriverRegForm()">
             <h2>Sign-Up As Driver</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
             <hr>
 
             <div class="col-12 mt-1">
                 <label for="emailAddress">Email Address</label>
-                <input type="email" class="form-control" name="emailAddress" placeholder="Eg. nimal123@gmail.com">
+                <input type="email" class="form-control" name="emailAddress" placeholder="Eg. nimal123@gmail.com" formControlName="emailAddress">
             </div>
 
             <div class="col-12 mt-1">
                 <label for="mobileNumber">Create Password</label>
-                <input type="password" class="form-control" placeholder="**************">
+                <input type="password" class="form-control" placeholder="**************" formControlName="password">
             </div>
 
             <div class="col-12 mt-1">
                 <label for="mobileNumber">Confirm Password</label>
-                <input type="password" class="form-control" placeholder="**************">
+                <input type="password" class="form-control" placeholder="**************" formControlName="confPassword">
             </div>
 
             <div class="col-12 mt-3">

@@ -21,6 +21,7 @@ export class SignUpComponent implements OnInit {
 
   customerRegForm!: FormGroup;
   sellerRegForm!: FormGroup;
+  driverRegForm!: FormGroup;
 
   constructor(private formBulder: FormBuilder, private authService: AuthServiceService,
               private notify: ToastrService, private router: Router) {
@@ -42,9 +43,18 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  driverFormBuild() {
+    this.driverRegForm = this.formBulder.group({
+      emailAddress: ['', Validators.required],
+      password:  ['', Validators.required],
+      confPassword: ['', Validators.required]
+    })
+  }
+
   ngOnInit(): void {
     this.customerFormBuild();
     this.sellerFormBuild();
+    this.driverFormBuild();
   }
 
   onSubmitCustomerRegForm() {
@@ -71,6 +81,23 @@ export class SignUpComponent implements OnInit {
     (err) => {
       this.notify.error("There is Error Occur " + err);
     });
+  }
+
+  onSubmitDriverRegForm() {
+    this.regModel.emailAddress = this.driverRegForm.controls['emailAddress'].value;
+    this.regModel.password = this.driverRegForm.controls['password'].value;
+
+    this.authService.signUpDriver(this.regModel).subscribe((resp) => {
+      console.log(resp);
+      if (resp === 400) {
+        this.notify.info("Member Already Registered.");
+      } else {
+        this.notify.success("Member Sign-Up Successfully.");
+      }
+    },
+    (err) => {
+      this.notify.error("There is Error Occur " + err);
+    })
   }
 
   bringFalse() {

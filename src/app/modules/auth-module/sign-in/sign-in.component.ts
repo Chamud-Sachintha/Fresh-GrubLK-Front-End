@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit {
 
   customerSignInForm!: FormGroup;
   sellerSignInForm!: FormGroup;
+  driverSignInForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthServiceService,
               private notify: ToastrService, private router: Router) { 
@@ -40,9 +41,17 @@ export class SignInComponent implements OnInit {
     });
   }
 
+  driverSignInFormBuild() {
+    this.driverSignInForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
   ngOnInit(): void {
     this.customerSignInFormBuild();
     this.sellerSignInFormBuild();
+    this.driverSignInFormBuild();
   }
 
   bringFalse() {
@@ -122,6 +131,27 @@ export class SignInComponent implements OnInit {
         this.notify.error("Error Occur In " + err.message);
       }
     });
+  }
+
+  onSubmitDriverCredentials() {
+    this.regModel.emailAddress = this.driverSignInForm.controls['userName'].value;
+    this.regModel.password = this.driverSignInForm.controls['password'].value;
+
+    this.authService.signInDriver(this.regModel).subscribe((resp) => {
+      this.router.navigate(['/app/driver']);
+      sessionStorage.setItem("userId", resp.id);
+      sessionStorage.setItem("username" ,resp.emailAddress);
+      sessionStorage.setItem("role", 'D');
+      this.notify.success("Sign-In Successfully.");
+    },
+    (err) => {
+      this.router.navigate(['/auth']);
+      if (err.status === 401) {
+        this.notify.error("Invalid Username or Password.");
+      } else {
+        this.notify.error("Error Occur In " + err.message);
+      }
+    })
   }
 
 }

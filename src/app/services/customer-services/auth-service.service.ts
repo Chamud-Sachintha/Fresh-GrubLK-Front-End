@@ -30,4 +30,14 @@ export class AuthServiceService {
 		const path = "http://localhost:3000/seller/login";
 		return this.http.post(path, loginUserDetails);
 	}
+
+	signUpDriver(loginUserDetails: RegModel): Observable<any> {
+		const path = "http://localhost:3000/driver/signup";
+		return this.http.post(path, loginUserDetails);
+	}
+
+	signInDriver(loginUserDetails: RegModel): Observable<any> {
+		const path = "http://localhost:3000/driver/login";
+		return this.http.post(path, loginUserDetails);
+	}
 }

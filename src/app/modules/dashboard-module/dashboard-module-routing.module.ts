@@ -4,6 +4,7 @@ import { AllCartsComponent } from './customer/all-carts/all-carts.component';
 import { ExploreRestuarantComponent } from './customer/explore-restuarant/explore-restuarant.component';
 import { FoodOrderComponent } from './customer/food-order/food-order.component';
 import { HomeComponent } from './customer/home/home.component';
+import { HomeComponent as DriverHomeComponent } from './driver/home/home.component';
 import { ManageCartComponent } from './customer/manage-cart/manage-cart.component';
 import { OrdersComponent } from './customer/orders/orders.component';
 import { ProfileSetingsComponent } from './customer/profile-setings/profile-setings.component';
@@ -116,7 +117,13 @@ const routes: Routes = [
       {
         path: 'seller/profile',
         component: SellerProfileSetingsComponent
-      }
+      },
+
+      /* driver routing paths */
+      {
+        path: 'driver',
+        component: DriverHomeComponent
+      },
     ]
   }
 ];
