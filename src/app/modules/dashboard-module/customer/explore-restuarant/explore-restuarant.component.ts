@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
+import { EatableServiceService } from 'src/app/services/seller-services/eatable-service.service';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
 import { Cart } from 'src/app/shared/models/Cart';
 
@@ -23,7 +24,7 @@ export class ExploreRestuarantComponent implements OnInit {
   eatableQuantity: number = 0;
 
   constructor(private route: ActivatedRoute, private restuarantService: RestuarantServiceService,
-    private orderingService: OrderServiceService) { }
+    private orderingService: OrderServiceService, private eatableService: EatableServiceService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,6 +34,21 @@ export class ExploreRestuarantComponent implements OnInit {
     this.getSelectedRestuarantDetails();
     this.getCategoriesOfSelectedRestuarant();
     this.getEatableListBySelectedRestuarant();
+  }
+
+  onClickSearchEatableByCategory(categoryId: string, searchValue: string) {
+    this.getEatableListByRestuarant = [];
+    this.eatableService.getEatablesByCustomerSearchType(categoryId, searchValue, this.restuarantId).subscribe((resp) => {
+      resp.forEach((el) => {
+        let TYPED_ARRAY = new Uint8Array(el.eatableFeaturedImage.data);
+        const STRING_CHAR = TYPED_ARRAY.reduce((data, byte)=> {
+          return data + String.fromCharCode(byte);
+          }, '');
+
+        el.eatableFeaturedImage = STRING_CHAR
+        this.getEatableListByRestuarant.push(el);
+      });
+    });
   }
 
   addeatableToCart(eatableId: string, quantity: string) {

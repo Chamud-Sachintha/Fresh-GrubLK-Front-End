@@ -3,6 +3,43 @@
     <hr style="width: 60rem;">
     <div class="row">
         <div class="col-12">
+            <h5>Filter Your Eatables</h5>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <select class="form-select" aria-label="Default select example" #searchType (change)="onChangeSearchType(searchType.value)">
+                    <option selected>Open this select menu</option>
+                    <option value="1">By Eatable Name</option>
+                    <option value="2">By Restuarant</option>
+                    <option value="3">By Category</option>
+                    <option value="4">By Status</option>
+                </select>
+            </div>
+            <div class="col-4" *ngIf="this.isRestuarant && !this.isCategory">
+                <select class="form-select" aria-label="Default select example" #restuarantId (change)="onSetRestuarantId(restuarantId.value)">
+                    <option selected>Open this select menu</option>
+                    <option value="{{eachRestuarant.id}}" *ngFor="let eachRestuarant of this.getAllRestuarantsBySellerId">{{ eachRestuarant.restuarantName }}</option>
+                </select>
+            </div>
+            <div class="col-4" *ngIf="this.isCategory && !this.isRestuarant">
+                <select class="form-select" aria-label="Default select example" #categoryId (change)="onSetRestuarantId(categoryId.value)">
+                    <option selected>Open this select menu</option>
+                    <option value="{{eachCategory.id}}" *ngFor="let eachCategory of this.getAllCategoriesBySellerId">{{ eachCategory.categoryName }}</option>
+                </select>
+            </div>
+            <div class="col-4" *ngIf="!this.isRestuarant && !this.isCategory">
+                <input type="text" class="form-control" placeholder="Type Your Value Here" [(ngModel)]="this.searchValue">
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary btn-sm" (click)="onClickFilterBySearchType(searchType.value)">Search</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary btn-sm" (click)="onClickClearFilters()">Clear Filters</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
             <table class="table align-middle mb-0 bg-white">
                 <thead class="bg-light">
                     <tr>
@@ -16,11 +53,11 @@
                     <tr *ngFor="let eatable of this.getListOfEatablesBySeller">
                         <td>
                             <div class="d-flex align-items-center">
-                                <img [src]="eatable.imageFile" alt=""
-                                    style="width: 45px; height: 45px" class="rounded-circle" />
+                                <img [src]="eatable.imageFile" alt="" style="width: 45px; height: 45px"
+                                    class="rounded-circle" />
                                 <div class="ms-3">
                                     <p class="fw-bold mb-1">{{ eatable.eatableName }}</p>
-                                    <p class="text-muted mb-0">{{ eatable.eatablePrice }}</p>
+                                    <p class="text-muted mb-0">LKR .{{ eatable.eatablePrice }} .00</p>
                                 </div>
                             </div>
                         </td>
@@ -32,7 +69,8 @@
                             <span class="badge badge-secondary rounded-pill d-inline">Inactive</span>
                         </td>
                         <td>
-                            <button class="btn btn-success btn-sm" (click)="onClickUpdateEatable(eatable.id)">Update</button>
+                            <button class="btn btn-success btn-sm"
+                                (click)="onClickUpdateEatable(eatable.id)">Update</button>
                             <button class="ms-3 btn btn-danger btn-sm">Delete</button>
                         </td>
                     </tr>

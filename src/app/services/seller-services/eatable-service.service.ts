@@ -31,4 +31,16 @@ export class EatableServiceService {
     const path = "http://localhost:3000/eatable/getEatablesByOrderId?" + "orderId=" + orderId;
     return this.http.get<any[]>(path);
   }
+
+  getEatableBySearchType(sellerId: string, searchType: string, searchValue: string):Observable<any[]> {
+    const path = "http://localhost:3000/eatable/getEatableBySearchType?" + "searchType=" + searchType + "&searchValue=" + searchValue + "&sellerId=" + sellerId;
+    return this.http.get<any[]>(path);
+  }
+
+  getEatablesByCustomerSearchType(categoryId: string, searchValue: string, restuarantId: string):Observable<any[]>{
+    const path = "http://localhost:3000/eatable/getEatableByCustomerSearchType?" + "searchCategory=" + categoryId
+                  + "&searchValue=" + searchValue + "&restuarantId=" + restuarantId;
+    
+    return this.http.get<any[]>(path);
+  }
 }
