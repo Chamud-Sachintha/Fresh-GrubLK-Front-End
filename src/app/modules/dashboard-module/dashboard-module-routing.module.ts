@@ -22,6 +22,8 @@ import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/s
 import { UpdateCategoriesComponent } from './seller/update-categories/update-categories.component';
 import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.component';
 import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
+import { DriverProfileSettingsComponent } from './driver/driver-profile-settings/driver-profile-settings.component';
+import { AvailableDeliveriesComponent } from './driver/available-deliveries/available-deliveries.component';
 
 const routes: Routes = [
   {
@@ -124,6 +126,14 @@ const routes: Routes = [
         path: 'driver',
         component: DriverHomeComponent
       },
+      {
+        path: 'driver/available-deliveries',
+        component: AvailableDeliveriesComponent
+      },
+      {
+        path: 'driver/profile',
+        component: DriverProfileSettingsComponent
+      }
     ]
   }
 ];
