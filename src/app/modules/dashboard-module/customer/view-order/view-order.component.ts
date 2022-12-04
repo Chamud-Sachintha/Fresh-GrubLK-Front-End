@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 import { EatableServiceService } from 'src/app/services/seller-services/eatable-service.service';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
+import { CommonDetails } from 'src/app/shared/models/CommonDetails';
 import { Restuarant } from 'src/app/shared/models/Restuarant';
 
 @Component({
@@ -17,8 +19,10 @@ export class ViewOrderComponent implements OnInit {
   orderSubTotal!: number;
   orderStatus!: string;
   isRestuarantDetailsHave: boolean = true;
+  commonDetails = new CommonDetails();
 
-  constructor(private route: ActivatedRoute, private eatableService: EatableServiceService, private restuarantService: RestuarantServiceService) { }
+  constructor(private route: ActivatedRoute, private eatableService: EatableServiceService, private restuarantService: RestuarantServiceService
+              , private commonService:CommonService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -26,7 +30,9 @@ export class ViewOrderComponent implements OnInit {
     });
 
     this.getSelectedEatableDetailsByOrderId();
-    console.log(this.selectedEatableDetails);
+    this.commonService.getDeliveryFeeFromCommonPrices("DF").subscribe((data) => {
+      this.commonDetails = data;
+    })
   }
 
   getSelectedEatableDetailsByOrderId() {

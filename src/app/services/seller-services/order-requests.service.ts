@@ -19,9 +19,9 @@ export class OrderRequestsService {
     return this.http.get<any[]>(path);
   }
 
-  manageOrderStatusByOrderId(orderId: string, orderStatus: string):Observable<any[]> {
+  manageOrderStatusByOrderId(orderId: string, orderStatus: string) {
     const path = "http://localhost:3000/seller/manage-order/updateOrderStatus?" + "orderId=" + orderId + "&orderStatus=" + orderStatus;
-    return this.http.get<any[]>(path);
+    return this.http.get(path, {responseType: 'text'});
   }
 
   getAllOngoingOrdersBySeller(sellerId: string):Observable<any[]> {

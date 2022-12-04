@@ -27,11 +27,13 @@
                         <td></td>
                         <td></td>
                         <td>
+                            <p class="font-weight-bold">Delivery Fee</p>
                             <p class="font-weight-bold">Sub Total</p>
                             <p class="font-weight-bold">Order Status</p>
                         </td>
                         <td>
-                            <p class="font-weight-bold">LKR . {{ this.orderSubTotal }} .00 </p>
+                            <p class="font-weight-bold">LKR . {{ this.commonDetails.price }} .00 </p>
+                            <p class="font-weight-bold">LKR . {{ this.orderSubTotal + this.commonDetails.price }} .00 </p>
                             <p class="font-weight-bold"> {{ this.orderStatus }} </p>
                         </td>
                     </tr>

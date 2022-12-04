@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { MasterService } from 'src/app/services/driver-services/master.service';
 import { OrderRequestsService } from 'src/app/services/seller-services/order-requests.service';
 import { Restuarant } from 'src/app/shared/models/Restuarant';
 import { RestuarantServiceService } from '../../../../services/seller-services/restuarant-service.service';
@@ -22,9 +24,11 @@ export class ManageOrderComponent implements OnInit {
   newOrderStatus!: string;
   orderStatus!: string;
   queryParamOrderId!: string;
+  userId!: string;
 
   constructor(private restuarantService: RestuarantServiceService, private route: ActivatedRoute ,
-              private orderRequestService: OrderRequestsService) { }
+              private orderRequestService: OrderRequestsService, private notify: ToastrService,
+              private driverServiceMaster: MasterService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -37,11 +41,28 @@ export class ManageOrderComponent implements OnInit {
     console.log(this.allEatablesByOrder);
   }
 
-  onUpdateOrderStatus(orderStatus: string) {
-    this.newOrderStatus = orderStatus == "1" ? "PRE" : "";
-    this.orderRequestService.manageOrderStatusByOrderId(this.orderId, this.newOrderStatus).subscribe((resp) => {
-      console.log(resp);
+  onClickOpenToDeliver() {
+    this.driverServiceMaster.assignDriverToOrder(this.restuarantDetails.lat, this.restuarantDetails.long).subscribe((data) => {
+      console.log(data);
     })
+  }
+
+  onUpdateOrderStatus(orderStatus: string) {
+    if (orderStatus === "1") {
+      this.newOrderStatus = "PRE"
+    } else if (orderStatus === "2") {
+      this.newOrderStatus = "PACK"
+    } else if (orderStatus === "3") {
+      this.newOrderStatus = "DEL"
+    } else if (orderStatus === "4") {
+      this.newOrderStatus = "COM"
+    }
+
+    this.orderRequestService.manageOrderStatusByOrderId(this.orderId, this.newOrderStatus).subscribe((resp) => {
+      this.notify.success("Order Status Updated.");
+    },(err) => {
+      this.notify.error("There is An Error Occur " + err);
+    });
   }
 
   getEatablesByRestuarantAndOrder() {
@@ -54,8 +75,9 @@ export class ManageOrderComponent implements OnInit {
 
       this.allEatablesByOrder.forEach((el) => {
         this.totalAmount = el.subTotal
-        this.currentOrderStatus = el.orderStatus == "PEN" ? "Pending" : el.orderStatus == "PRE" ? "Preparering" : "";
+        this.currentOrderStatus = el.orderStatus == "PEN" ? "Pending" : el.orderStatus == "PRE" ? "Preparering" : el.orderStatus == "PACK" ? "Packaging" : el.orderStatus == "DEL" ? "Delivering" : el.orderStatus == "COM" ? "Complete" : "";
         this.orderId = el.orderId
+        this.userId = el.userId;
       })
     })
   }
@@ -75,6 +97,8 @@ export class ManageOrderComponent implements OnInit {
 
       this.selectedrestuarantDetails.forEach((el) => {
         this.restuarantDetails.restuarantName = el.restuarantName;
+        this.restuarantDetails.lat = el.lat;
+        this.restuarantDetails.long = el.long;
       });
     })
   } 

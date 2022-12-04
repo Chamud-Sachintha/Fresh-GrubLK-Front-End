@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
 import { OrderStatus } from 'src/app/shared/config/orderStatus';
 import { Cart } from 'src/app/shared/models/Cart';
+import { CommonDetails } from 'src/app/shared/models/CommonDetails';
 import { OrderDetails } from 'src/app/shared/models/OrderDetails';
 
 @Component({
@@ -14,6 +16,7 @@ export class ManageCartComponent implements OnInit {
 
   orderStatus = new OrderStatus();
   orderDetails = new OrderDetails();
+  commonDetails = new CommonDetails();
   selectedCartItems: any[] = [];
   orderItemsList: Cart[] = [];
   userId!: any;
@@ -24,7 +27,7 @@ export class ManageCartComponent implements OnInit {
   restuarantId!: string;
   subTotal: number = 0;
 
-  constructor(private orderingService: OrderServiceService, private route: ActivatedRoute) { }
+  constructor(private orderingService: OrderServiceService, private route: ActivatedRoute, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -32,13 +35,14 @@ export class ManageCartComponent implements OnInit {
     });
 
     this.getCartItemsByCustomerId();
-
-    console.log(this.selectedCartItems);
+    this.commonService.getDeliveryFeeFromCommonPrices("DF").subscribe((data: CommonDetails) => {
+      this.commonDetails = data
+    })
   }
 
   onSubmitCheckout() {
     this.orderDetails.userId = sessionStorage.getItem("userId");
-    this.orderDetails.subTotal = this.subTotal;
+    this.orderDetails.subTotal = this.subTotal + this.commonDetails.price;
     this.orderDetails.orderStatus = this.orderStatus.PENDING_STATUS;
     this.orderDetails.restuarantId = this.restuarantId;
 
