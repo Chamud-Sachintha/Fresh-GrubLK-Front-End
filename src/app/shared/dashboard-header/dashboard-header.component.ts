@@ -120,11 +120,6 @@ export class DashboardHeaderComponent implements OnInit {
           class: 'fa fa-home mr-3'
         },
         {
-          title: 'Jobs',
-          path: '#',
-          class: 'fa fa-home mr-3'
-        },
-        {
           title: 'Ratings',
           path: '#',
           class: 'fa fa-home mr-3'

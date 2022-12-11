@@ -24,6 +24,7 @@ import { UpdateEatableComponent } from './seller/update-eatable/update-eatable.c
 import { UpdateRestuarantComponent } from './seller/update-restuarant/update-restuarant.component';
 import { DriverProfileSettingsComponent } from './driver/driver-profile-settings/driver-profile-settings.component';
 import { AvailableDeliveriesComponent } from './driver/available-deliveries/available-deliveries.component';
+import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request/manage-delivery-request.component';
 
 const routes: Routes = [
   {
@@ -129,6 +130,10 @@ const routes: Routes = [
       {
         path: 'driver/available-deliveries',
         component: AvailableDeliveriesComponent
+      },
+      {
+        path: 'driver/manage-delivery-request/:id',
+        component: ManageDeliveryRequestComponent
       },
       {
         path: 'driver/profile',

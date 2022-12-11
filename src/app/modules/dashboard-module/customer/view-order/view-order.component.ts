@@ -50,7 +50,7 @@ export class ViewOrderComponent implements OnInit {
       for (let i = 0; i < this.selectedEatableDetails.length; i++) {
         this.orderSubTotal = parseFloat(this.selectedEatableDetails[i].subTotal);
         this.getSelectedRestuarantDetailsById(this.selectedEatableDetails[i].restuarantId);
-        this.orderStatus = (this.selectedEatableDetails[i].orderStatus === "PEN" ? "Pending" : this.selectedEatableDetails[i].orderStatus === "PRE" ? "Preparing" : "");
+        this.orderStatus = (this.selectedEatableDetails[i].orderStatus === "PEN" ? "Pending" : this.selectedEatableDetails[i].orderStatus === "PRE" ? "Preparing" : this.selectedEatableDetails[i].orderStatus === "PACK" ? "Packing" : this.selectedEatableDetails[i].orderStatus === "FD" ? "Finding Driver" : this.selectedEatableDetails[i].orderStatus === "D" ? "Delivering" : this.selectedEatableDetails[i].orderStatus === "COM" ? "Complete" : "");
 
         break;
       }

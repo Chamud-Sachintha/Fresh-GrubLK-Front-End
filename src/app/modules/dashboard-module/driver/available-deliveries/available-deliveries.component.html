@@ -12,23 +12,19 @@
                     <th scope="col">Pickup Location</th>
                     <th scope="col">Destination</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"></th>
+                  <tr *ngFor="let eachRequest of this.allAvailableDeliveryRequetsList">
                     <td></td>
-                    <td></td>
+                    <td>{{ eachRequest.restuarantName }}</td>
+                    <td>{{ eachRequest.location }}</td>
+                    <td>{{ eachRequest.landMobile }}</td>
+                    <td>LKR .{{ eachRequest.subTotal }} .00</td>
                     <td>
-                      <p class="font-weight-bold">Sub Total</p>
-                      <p class="font-weight-bold">Order Status</p>
+                      <button class="btn btn-primary btn-sm" (click)="onClickManageDeliveryRequest(eachRequest.id)">Manage</button>
                     </td>
-                    <td>
-                      <p class="font-weight-bold">ddddd </p>
-                      <p class="font-weight-bold"> hhhh </p>
-                    </td>
-                    <td></td>
                   </tr>
                 </tbody>
               </table>

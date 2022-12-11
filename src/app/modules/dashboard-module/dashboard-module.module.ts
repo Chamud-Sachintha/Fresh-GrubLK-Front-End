@@ -25,6 +25,7 @@ import { ViewOrderComponent } from './customer/view-order/view-order.component';
 import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/seller-profile-setings.component';
 import { DriverProfileSettingsComponent } from './driver/driver-profile-settings/driver-profile-settings.component';
 import { AvailableDeliveriesComponent } from './driver/available-deliveries/available-deliveries.component';
+import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request/manage-delivery-request.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AvailableDeliveriesComponent } from './driver/available-deliveries/avai
     ViewOrderComponent,
     SellerProfileSetingsComponent,
     DriverProfileSettingsComponent,
-    AvailableDeliveriesComponent
+    AvailableDeliveriesComponent,
+    ManageDeliveryRequestComponent
   ],
   imports: [
     CommonModule,

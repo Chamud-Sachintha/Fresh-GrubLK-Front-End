@@ -30,7 +30,7 @@
                             <!-- <p class="text-muted mb-0">{{ restuarant.state }}</p> -->
                         </td>
                         <td>
-                            <span class="badge badge-primary rounded-pill d-inline">{{ category.orderStatus == "PEN" ? "Pending" : category.orderStatus == "PRE" ? "Preparing" : "" }}</span>
+                            <span class="badge badge-primary rounded-pill d-inline">{{ category.orderStatus == "PEN" ? "Pending" : category.orderStatus == "PRE" ? "Preparing" : category.orderStatus == "PACK" ? "Packing" : category.orderStatus == "FD" ? "Finding Driver" : category.orderStatus == "D" ? "Delivering" : category.orderStatus == "COM" ? "Complete" : "" }}</span>
                         </td>
                         <td>
                             <button class="btn btn-success btn-sm" (click)="onClickViewOrder(category.id)">View Order</button>

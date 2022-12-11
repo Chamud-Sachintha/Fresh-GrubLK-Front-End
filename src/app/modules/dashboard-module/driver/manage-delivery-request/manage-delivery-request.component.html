@@ -1,0 +1,95 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Manage Delivery Request # {{ this.orderId }}</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-12" style="border-right: 1px solid grey;">
+                            <h5>Restuarant Details (Pick-Up Location Info.)</h5>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <img [src]="this.restuarantDetails.featuredImage" alt=""
+                                        style="width: 430px;">
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-4">
+                                    <h6>Restuarant Name</h6>
+                                    <p>{{ this.restuarantDetails.restuarantName }}</p>
+                                </div>
+
+                                <div class="col-8">
+                                    <h6>Restuarant Location</h6>
+                                    <p>{{ this.restuarantDetails.location }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <h6>LAN Mobile</h6>
+                                    <p>{{ this.restuarantDetails.lanLine }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <h5>Customer Info. (Destination Location Info.)</h5>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <img [src]="this.profileDetails.profileImage" alt=""
+                                        style="width: 230px; height: 230px; border-radius: 50%;">
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-4">
+                                    <h6>Full Name</h6>
+                                    <p>{{ this.profileDetails.fullName }}</p>
+                                </div>
+
+                                <div class="col-8">
+                                    <h6>Deliver Location</h6>
+                                    <p>{{ this.profileDetails.location }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <h6>Customer Mobile</h6>
+                                    <p>{{ this.profileDetails.mobileNumber }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <h6>Update Delivery Status</h6>
+                            <select class="form-select" aria-label="Default select example" #deliveryStatus>
+                                <option selected>Open this select menu</option>
+                                <option value="P">Picked Up</option>
+                                <option value="D">Delivered</option>
+                            </select>
+                            <button class="btn btn-primary btn-sm mt-3" (click)="onClickUpdateDeliveryStatus(deliveryStatus.value)">Update Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

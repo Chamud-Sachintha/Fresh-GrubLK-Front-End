@@ -55,8 +55,9 @@
                   <select class="form-select" aria-label="Default select example" #orderStatus>
                     <option value="1" selected>Prepare</option>
                     <option value="2">Packing</option>
-                    <option value="3">Delivering</option>
-                    <option value="4">Complete</option>
+                    <option value="3">Finding Driver</option>
+                    <option value="4">Delivering</option>
+                    <option value="5">Complete</option>
                   </select>
                 </div>
                 <div class="col-3">
@@ -75,9 +76,43 @@
         <div class="card-body">
           <h5 class="card-title">Delivery Details</h5>
           <hr>
-          <div class="row">
+          <div class="row" *ngIf="!this.isDriverAssigned">
             <div class="col-12 d-flex align-items-center justify-content-center" style="background-color: #f9f9f9; height: 10rem;">
               <button class="btn btn-sm btn-primary" (click)="onClickOpenToDeliver()">Open To Deliver</button>
+            </div>
+          </div>
+          <div class="row" *ngIf="this.isDriverAssigned">
+            <div class="col-md-6 col-lg-6 col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <img [src]="this.driverDetails.profileImage" alt="" style="border-radius: 50%; width: 100px; height: 100px;">
+                    </div>
+                  </div>
+                  <div class="row mt-2 text-center">
+                    <span>Driver Name :- {{ this.driverDetails.fullName }}</span>
+                    <span>Driver Email :- {{ this.driverDetails.emailAddress }}</span>
+                    <span>Driver Location :- {{ this.driverDetails.location }}</span>
+                    <span>Driver Mobile :- {{ this.driverDetails.mobileNumber }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="text-center">Driver Deliver Complete Notification</h5>
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <img src="https://img.icons8.com/bubbles/100/null/man-with-a-clock.png"/>
+                    </div>
+                    <div class="col-12 text-center">
+                      <span>{{ this.deliveryStatus == "ND" ? "Not Delivered Yet to Customer." : this.deliveryStatus == "P" ? "Picking Up the Order" : this.deliveryStatus == "D" ? "Delivered to Customer" : "" }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
