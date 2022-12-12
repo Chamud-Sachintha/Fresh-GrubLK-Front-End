@@ -25,6 +25,7 @@ import { UpdateRestuarantComponent } from './seller/update-restuarant/update-res
 import { DriverProfileSettingsComponent } from './driver/driver-profile-settings/driver-profile-settings.component';
 import { AvailableDeliveriesComponent } from './driver/available-deliveries/available-deliveries.component';
 import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request/manage-delivery-request.component';
+import { CompletedJobsComponent } from './driver/completed-jobs/completed-jobs.component';
 
 const routes: Routes = [
   {
@@ -130,6 +131,10 @@ const routes: Routes = [
       {
         path: 'driver/available-deliveries',
         component: AvailableDeliveriesComponent
+      },
+      {
+        path: 'driver/completed',
+        component: CompletedJobsComponent
       },
       {
         path: 'driver/manage-delivery-request/:id',

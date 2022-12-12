@@ -42,4 +42,9 @@ export class MasterService {
                   + "&deliveryStatus=" + deliveryStatus;
     return this.http.get(path);
   }
+
+  getCompletedDeliveryRequestsByDriverId(driverId: string):Observable<any[]> {
+    const path = "http://localhost:3000/driver/search/getCompletedDeleveryRequestByDriverId?" + "driverId=" + driverId;
+    return this.http.get<any[]>(path);
+  }
 }

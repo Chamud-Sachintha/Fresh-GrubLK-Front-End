@@ -1,0 +1,42 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Completed Jobs</h2>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Restuarant Name</th>
+                        <th>Picked Up Location</th>
+                        <th>Destination</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let deliveryRequest of this.completedDeliveryRequestsList">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img [src]="deliveryRequest.imageFile" alt=""
+                                    style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ deliveryRequest.restuarantName }}</p>
+                                    <!-- <p class="text-muted mb-0">{{ category.categoryDescription }}</p> -->
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ deliveryRequest.location }}</p>
+                            <!-- <p class="text-muted mb-0">{{ restuarant.state }}</p> -->
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ deliveryRequest.location }}</p>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-sm" [routerLink]="['/app/seller/manage-order']" [queryParams]="{ orderId: deliveryRequest.orderId, restuarantId: deliveryRequest.RestuarantId }">View Delivery Request</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

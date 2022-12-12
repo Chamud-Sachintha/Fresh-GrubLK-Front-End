@@ -57,8 +57,26 @@
                         </div>
                     </div>
                     <div class="row mt-3">
+                        <div class="col-6">
+                            <h5>Restuarant Name</h5>
+                            <p>{{ this.restuarantDetails.restuarantName }}</p>
+                        </div>
+                        <div class="col-6">
+                            <h5>Location</h5>
+                            <p>{{ this.restuarantDetails.location }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <h5>Contact No.</h5>
+                            <p>{{ this.restuarantDetails.lanLine }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2" *ngIf="this.orderStatus === 'Complete'">
                         <div class="col-12">
-                            <h6 class="card-subtitle">{{ this.restuarantDetails.restuarantName }}</h6>
+                            <button class="btn btn-primary btn-sm">Give Feedback For Restuarant</button>
                         </div>
                     </div>
                 </div>
@@ -70,6 +88,40 @@
                 <div class="card-body">
                     <h5 class="card-title">Delivery Details</h5>
                     <hr style="border: 1px solid black;">
+
+                    <div *ngIf="this.isDriverAssigned">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img [src]="this.driverDetails.profileImage" alt="" style="width: 200px; height: 200px; border-radius: 50%;">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <h5>Full Name</h5>
+                                <p>{{ this.driverDetails.fullName }}</p>
+                            </div>
+                            <div class="col-6">
+                                <h5>Email Address</h5>
+                                <p>{{ this.driverDetails.emailAddress }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Mobile Number</h5>
+                                <p>{{ this.driverDetails.mobileNumber }}</p>
+                            </div>
+                            <div class="col-6">
+                                <h5>Location</h5>
+                                <p>{{ this.driverDetails.location }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2" *ngIf="this.orderStatus === 'Complete'">
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-sm">Give Feedback For Driver</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

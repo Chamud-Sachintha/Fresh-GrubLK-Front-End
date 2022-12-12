@@ -26,6 +26,8 @@ import { SellerProfileSetingsComponent } from './seller/seller-profile-setings/s
 import { DriverProfileSettingsComponent } from './driver/driver-profile-settings/driver-profile-settings.component';
 import { AvailableDeliveriesComponent } from './driver/available-deliveries/available-deliveries.component';
 import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request/manage-delivery-request.component';
+import { CompletedJobsComponent } from './driver/completed-jobs/completed-jobs.component';
+import { RatingDialogComponent } from './customer/rating-dialog/rating-dialog.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request
     SellerProfileSetingsComponent,
     DriverProfileSettingsComponent,
     AvailableDeliveriesComponent,
-    ManageDeliveryRequestComponent
+    ManageDeliveryRequestComponent,
+    CompletedJobsComponent,
+    RatingDialogComponent
   ],
   imports: [
     CommonModule,

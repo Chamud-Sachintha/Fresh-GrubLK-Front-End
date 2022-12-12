@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cart } from 'src/app/shared/models/Cart';
 import { OrderDetails } from 'src/app/shared/models/OrderDetails';
+import { Profile } from 'src/app/shared/models/Profile';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,10 @@ export class OrderServiceService {
   getAllCartsByCustomerId(userId: string):Observable<any[]> {
     const path = "http://localhost:3000/customer/getAllCartsByCustomerId/search?" + "userId=" + userId;
     return this.http.get<any[]>(path);
+  }
+
+  getAssignedDriverForDeliverByOrderIdAndOrderStatus(orderId: string):Observable<Profile[]> {
+    const path = "http://localhost:3000/customer/search/getAssignedDriverForOrderByOrderId?" + "orderId=" + orderId;
+    return this.http.get<Profile[]>(path);
   }
 }
