@@ -1,1 +1,27 @@
-<p>rating-dialog works!</p>
+<div class="row" *ngIf="this.isDriver">
+    <div class="col-12">
+        <h2>Provide Rating For Driver</h2>
+    </div>
+
+    <div class="col-12">
+        <ngx-star-rating [(ngModel)]="this.ratingValue"></ngx-star-rating>
+    </div>
+
+    <div class="col-12 mt-2">
+        <button class="btn btn-primary btn-sm" style="float: right;" (click)="onSumbitRatingValueByTypeAndId('D')">Submit</button>
+    </div>
+</div>
+
+<div class="row" *ngIf="this.isRestuarant">
+    <div class="col-12">
+        <h2>Provide Rating For Restuarant</h2>
+    </div>
+
+    <div class="col-12" *ngIf="this.isRestuarant">
+        <ngx-star-rating [(ngModel)]="this.ratingValue"></ngx-star-rating>
+    </div>
+
+    <div class="col-12 mt-2">
+        <button class="btn btn-primary btn-sm" style="float: right;" (click)="onSumbitRatingValueByTypeAndId('R')">Submit</button>
+    </div>
+</div>

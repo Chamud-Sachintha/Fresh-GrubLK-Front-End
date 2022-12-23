@@ -26,6 +26,7 @@ import { DriverProfileSettingsComponent } from './driver/driver-profile-settings
 import { AvailableDeliveriesComponent } from './driver/available-deliveries/available-deliveries.component';
 import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request/manage-delivery-request.component';
 import { CompletedJobsComponent } from './driver/completed-jobs/completed-jobs.component';
+import { HomeComponent as AdminHomeComponent } from './admin/home/home.component';
 
 const routes: Routes = [
   {
@@ -143,6 +144,13 @@ const routes: Routes = [
       {
         path: 'driver/profile',
         component: DriverProfileSettingsComponent
+      },
+
+      /* admin routing paths */
+
+      {
+        path: 'driver',
+        component: AdminHomeComponent
       }
     ]
   }

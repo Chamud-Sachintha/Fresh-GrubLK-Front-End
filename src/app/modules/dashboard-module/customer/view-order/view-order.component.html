@@ -74,9 +74,9 @@
                         </div>
                     </div>
 
-                    <div class="row mt-2" *ngIf="this.orderStatus === 'Complete'">
+                    <div class="row mt-2" *ngIf="this.orderStatus === 'Complete' && this.isProvideRestuarantRating">
                         <div class="col-12">
-                            <button class="btn btn-primary btn-sm">Give Feedback For Restuarant</button>
+                            <button class="btn btn-primary btn-sm" (click)="openRestuarantRatingDialog()">Give Feedback For Restuarant</button>
                         </div>
                     </div>
                 </div>
@@ -117,9 +117,9 @@
                         </div>
                     </div>
 
-                    <div class="row mt-2" *ngIf="this.orderStatus === 'Complete'">
+                    <div class="row mt-2" *ngIf="this.orderStatus === 'Complete' && this.isProvideDriverRating">
                         <div class="col-12">
-                            <button class="btn btn-primary btn-sm">Give Feedback For Driver</button>
+                            <button class="btn btn-primary btn-sm" (click)="this.openDriverRatingDialog()">Give Feedback For Driver</button>
                         </div>
                     </div>
                 </div>

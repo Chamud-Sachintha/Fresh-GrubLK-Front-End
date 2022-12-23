@@ -28,6 +28,10 @@ import { AvailableDeliveriesComponent } from './driver/available-deliveries/avai
 import { ManageDeliveryRequestComponent } from './driver/manage-delivery-request/manage-delivery-request.component';
 import { CompletedJobsComponent } from './driver/completed-jobs/completed-jobs.component';
 import { RatingDialogComponent } from './customer/rating-dialog/rating-dialog.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { ManageCustomersComponent } from './admin/manage-customers/manage-customers.component';
+import { ManageSellersComponent } from './admin/manage-sellers/manage-sellers.component';
+import { ManageDriversComponent } from './admin/manage-drivers/manage-drivers.component';
 
 
 @NgModule({
@@ -56,13 +60,17 @@ import { RatingDialogComponent } from './customer/rating-dialog/rating-dialog.co
     AvailableDeliveriesComponent,
     ManageDeliveryRequestComponent,
     CompletedJobsComponent,
-    RatingDialogComponent
+    RatingDialogComponent,
+    ManageCustomersComponent,
+    ManageSellersComponent,
+    ManageDriversComponent
   ],
   imports: [
     CommonModule,
     DashboardModuleRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxStarRatingModule
   ]
 })
 export class DashboardModuleModule { }

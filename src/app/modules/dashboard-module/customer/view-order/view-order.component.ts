@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { OrderServiceService } from 'src/app/services/customer-services/order-service.service';
+import { RatingServiceService } from 'src/app/services/customer-services/rating-service.service';
 import { EatableServiceService } from 'src/app/services/seller-services/eatable-service.service';
 import { RestuarantServiceService } from 'src/app/services/seller-services/restuarant-service.service';
 import { CommonDetails } from 'src/app/shared/models/CommonDetails';
 import { Profile } from 'src/app/shared/models/Profile';
 import { Restuarant } from 'src/app/shared/models/Restuarant';
+import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
 
 @Component({
   selector: 'app-view-order',
@@ -24,9 +27,12 @@ export class ViewOrderComponent implements OnInit {
   isRestuarantDetailsHave: boolean = true;
   commonDetails = new CommonDetails();
   isDriverAssigned: boolean = false;
+  isProvideRestuarantRating = false;
+  isProvideDriverRating = false;
 
   constructor(private route: ActivatedRoute, private eatableService: EatableServiceService, private restuarantService: RestuarantServiceService
-    , private commonService: CommonService, private orderService: OrderServiceService) { }
+    , private commonService: CommonService, private orderService: OrderServiceService, private dialog: MatDialog
+    , private ratingService: RatingServiceService) { }
 
   ngOnInit(): void {
     this.orderStatus = sessionStorage.getItem("orderStatus");
@@ -34,11 +40,47 @@ export class ViewOrderComponent implements OnInit {
       this.orderId = params['id'];
     });
 
+    this.getRatingInfomations();
     this.getSelectedEatableDetailsByOrderId();
     this.getAssignedDriverForDeliver();
     this.commonService.getDeliveryFeeFromCommonPrices("DF").subscribe((data) => {
       this.commonDetails = data;
     })
+  }
+
+  getRatingInfomations() {
+    this.ratingService.getRestuarantRatingForOrder(this.orderId, 'R').subscribe((data) => {
+      if (data === true) {
+        this.isProvideRestuarantRating = true;
+      }
+    });
+
+    this.ratingService.getRestuarantRatingForOrder(this.orderId, 'D').subscribe((data) => {
+      if (data === true) {
+        this.isProvideDriverRating = true;
+      }
+    })
+  }
+
+  openDriverRatingDialog() {
+    this.dialog.open(RatingDialogComponent, {
+      data: {
+        isDriver: true,
+        driverId: this.driverDetails.userId,
+        orderId: this.orderId
+      },
+    });
+  }
+
+  openRestuarantRatingDialog() {
+    this.dialog.open(RatingDialogComponent, {
+      data: {
+        restuarantId: this.restuarantDetails.resuarantId,
+        orderId: this.orderId,
+        isDriver: false,
+        isRestuarant: true
+      },
+    });
   }
 
   getAssignedDriverForDeliver() {
@@ -51,6 +93,7 @@ export class ViewOrderComponent implements OnInit {
           }, '');
 
           this.isDriverAssigned = true;
+          this.driverDetails.userId = el.id;
           this.driverDetails.profileImage = STRING_CHAR;
           this.driverDetails.fullName = el.fullName;
           this.driverDetails.emailAddress = el.emailAddress;
@@ -93,6 +136,7 @@ export class ViewOrderComponent implements OnInit {
           }, '');
 
           el.imageFile = STRING_CHAR
+          this.restuarantDetails.resuarantId = el.id;
           this.restuarantDetails.restuarantName = el.restuarantName;
           this.restuarantDetails.location = el.location;
           this.restuarantDetails.lanLine = el.landMobile;

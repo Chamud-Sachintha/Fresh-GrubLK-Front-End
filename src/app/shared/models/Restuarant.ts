@@ -1,4 +1,5 @@
 export class Restuarant{
+    resuarantId!: string
     sellerId!: any
     restuarantName!: string
     restuarantDescription!: string

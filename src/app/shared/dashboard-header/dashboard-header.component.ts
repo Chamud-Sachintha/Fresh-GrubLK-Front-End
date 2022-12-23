@@ -140,6 +140,14 @@ export class DashboardHeaderComponent implements OnInit {
           class: 'fa fa-home mr-3'
         }
       ];
+    } else if (this.router.url.includes('admin')) {
+      this.menuItems = [
+        {
+          title: 'Dashboard',
+          path: '/app/admin',
+          class: 'fa fa-home mr-3'
+        },
+      ]
     }
   }
 
